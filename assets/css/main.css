@@ -1,10 +1,18 @@
-@import url(font-awesome.min.css);
+@import url(https://use.fontawesome.com/releases/v5.5.0/css/all.css);
 @import url("https://fonts.googleapis.com/css?family=Source+Sans+Pro:300");
 /*
 	Identity by HTML5 UP
 	html5up.net | @ajlkn
 	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
 */
+
+/*
+Colors:
+-660000 maroon
+
+
+*/
+
 /* Icon (alt) */
 html, body, div, span, applet, object,
 iframe, h1, h2, h3, h4, h5, h6, p, blockquote,
@@ -124,7 +132,7 @@ body {
 
 /* Type */
 body, input, select, textarea {
-  color: #414f57;
+  color: #FFA500;
   font-family: "Source Sans Pro", Helvetica, sans-serif;
   font-size: 14pt;
   font-weight: 300;
@@ -152,10 +160,10 @@ a {
     -ms-transition: color 0.2s ease, text-shadow 0.2s ease;
     transition: color 0.2s ease, text-shadow 0.2s ease; }
   a:hover {
-    color: #660000; }
+    color: #001030; }
 
 strong, b {
-  color: #313f47; }
+  color: #FFA500; }
 
 em, i {
   font-style: italic; }
@@ -164,7 +172,7 @@ p {
   margin: 0 0 1.5em 0; }
 
 h1, h2, h3, h4, h5, h6 {
-  color: #313f47;
+  color: #FFA500;
   line-height: 1.5;
   margin: 0 0 0.75em 0; }
   h1 a, h2 a, h3 a, h4 a, h5 a, h6 a {
@@ -206,7 +214,7 @@ sup {
 
 hr {
   border: 0;
-  border-bottom: solid 1px #c8cccf;
+  border-bottom: solid 1px #FFA500;
   margin: 1.5em 0; }
 
 /* Form */
@@ -257,7 +265,7 @@ form {
           width: calc(100% - 1.125em); } }
 
 label {
-  color: #313f47;
+  color: #FFA500;
   display: block;
   font-size: 0.9em;
   margin: 0 0 0.75em 0; }
@@ -273,7 +281,7 @@ textarea {
   -ms-appearance: none;
   appearance: none;
   border-radius: 4px;
-  border: solid 1px #c8cccf;
+  border: solid 1px #FFA500;
   color: inherit;
   display: block;
   outline: 0;
@@ -293,7 +301,7 @@ textarea {
   input[type="tel"]:focus,
   select:focus,
   textarea:focus {
-    border-color: #660000; }
+    border-color: #001030; }
 
 select {
   background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='40' preserveAspectRatio='none' viewBox='0 0 40 40'%3E%3Cpath d='M9.4,12.3l10.4,10.4l10.4-10.4c0.2-0.2,0.5-0.4,0.9-0.4c0.3,0,0.6,0.1,0.9,0.4l3.3,3.3c0.2,0.2,0.4,0.5,0.4,0.9 c0,0.4-0.1,0.6-0.4,0.9L20.7,31.9c-0.2,0.2-0.5,0.4-0.9,0.4c-0.3,0-0.6-0.1-0.9-0.4L4.3,17.3c-0.2-0.2-0.4-0.5-0.4-0.9 c0-0.4,0.1-0.6,0.4-0.9l3.3-3.3c0.2-0.2,0.5-0.4,0.9-0.4S9.1,12.1,9.4,12.3z' fill='%23c8cccf' /%3E%3C/svg%3E");
@@ -304,7 +312,7 @@ select {
   padding-right: 2.75em;
   text-overflow: ellipsis; }
   select option {
-    color: #313f47;
+    color: #FFA500;
     background: #ffffff; }
   select:focus::-ms-value {
     background-color: transparent; }
@@ -335,7 +343,7 @@ input[type="radio"] {
   input[type="checkbox"] + label,
   input[type="radio"] + label {
     text-decoration: none;
-    color: #414f57;
+    color: #FFA500;
     cursor: pointer;
     display: inline-block;
     font-size: 1em;
@@ -354,7 +362,7 @@ input[type="radio"] {
     input[type="checkbox"] + label:before,
     input[type="radio"] + label:before {
       border-radius: 4px;
-      border: solid 1px #c8cccf;
+      border: solid 1px #FFA500;
       content: '';
       display: inline-block;
       height: 1.65em;
@@ -366,11 +374,11 @@ input[type="radio"] {
       width: 1.65em; }
   input[type="checkbox"]:checked + label:before,
   input[type="radio"]:checked + label:before {
-    color: #660000;
+    color: #001030;
     content: '\f00c'; }
   input[type="checkbox"]:focus + label:before,
   input[type="radio"]:focus + label:before {
-    border-color: #660000; }
+    border-color: #001030; }
 
 input[type="checkbox"] + label:before {
   border-radius: 4px; }
@@ -427,7 +435,7 @@ ul {
     list-style: none;
     padding-left: 0; }
     ul.alt li {
-      border-top: solid 1px #c8cccf;
+      border-top: solid 1px #FFA500;
       padding: 0.5em 0; }
       ul.alt li:first-child {
         border-top: 0;
@@ -542,7 +550,7 @@ ul.icons {
       width: 3.75em;
       height: 3.75em;
       border-radius: 100%;
-      border: solid 1px #c8cccf;
+      border: solid 1px #FFA500;
       line-height: 3.75em;
       overflow: hidden;
       text-align: center;
@@ -557,9 +565,9 @@ ul.icons {
         text-transform: none !important; }
       ul.icons li a:before {
         color: #ffffff;
-        text-shadow: 1.25px 0px 0px #c8cccf, -1.25px 0px 0px #c8cccf, 0px 1.25px 0px #c8cccf, 0px -1.25px 0px #c8cccf; }
+        text-shadow: 1.25px 0px 0px #FFA500, -1.25px 0px 0px #FFA500, 0px 1.25px 0px #FFA500, 0px -1.25px 0px #FFA500; }
       ul.icons li a:hover:before {
-        text-shadow: 1.25px 0px 0px #660000, -1.25px 0px 0px #660000, 0px 1.25px 0px #660000, 0px -1.25px 0px #660000; }
+        text-shadow: 1.25px 0px 0px #001030, -1.25px 0px 0px #001030, 0px 1.25px 0px #001030, 0px -1.25px 0px #001030; }
       ul.icons li a:before {
         position: absolute;
         top: 0;
@@ -571,7 +579,7 @@ ul.icons {
         text-align: center;
         text-indent: 0; }
       ul.icons li a:hover {
-        border-color: #660000; }
+        border-color: #001030; }
   @media screen and (max-width: 480px) {
     ul.icons li a:before {
       font-size: 1.5rem; } }
@@ -596,8 +604,8 @@ button,
   padding: 0 1.5em;
   background-color: transparent;
   border-radius: 4px;
-  border: solid 1px #c8cccf;
-  color: #414f57 !important;
+  border: solid 1px #FFA500;
+  color: #FFA500 !important;
   cursor: pointer;
   text-align: center;
   text-decoration: none;
@@ -607,8 +615,8 @@ button,
   input[type="button"]:hover,
   button:hover,
   .button:hover {
-    border-color: #660000;
-    color: #660000 !important; }
+    border-color: #001030;
+    color: #001030 !important; }
   input[type="submit"].icon,
   input[type="reset"].icon,
   input[type="button"].icon,
@@ -666,11 +674,11 @@ button,
   -ms-transition: opacity 1s ease, -ms-transform 1s ease;
   transition: opacity 1s ease, transform 1s ease;
   padding: 4.5em 3em 3em 3em ;
-  background: #ffffff;
+  background-color:rgba(128, 0, 0, .7);
   border-radius: 4px;
   cursor: default;
   max-width: 100%;
-  opacity: 0.95;
+  opacity: 1;
   position: relative;
   text-align: center;
   width: 27em; }
@@ -678,11 +686,21 @@ button,
     position: relative;
     display: block;
     margin-bottom: 1.5em; }
-    #main .avatar img {
-      display: block;
+    #main .avatar img.top {
+      position:absolute;
+      left:auto;
       margin: 0 auto;
       border-radius: 100%;
-      box-shadow: 0 0 0 1.5em #ffffff; }
+      -webkit-transition: opacity .5s ease-in-out;
+      -moz-transition: opacity .5s ease-in-out;
+      -o-transition: opacity .5s ease-in-out;
+      transition: opacity .5s ease-in-out;
+      box-shadow: 0 0 0 0.15em #FFA500; }
+    #main .avatar img {
+      display:relative;
+      margin: 0 auto;
+      border-radius: 100%;
+      box-shadow: 0 0 0 0.15em #001030; }
     #main .avatar:before {
       content: '';
       display: block;
@@ -692,7 +710,10 @@ button,
       width: calc(100% + 6em);
       height: 1px;
       z-index: -1;
-      background: #c8cccf; }
+      background: #FFA500; }
+    #main .avatar img.top:hover {
+        opacity:0
+    }
   @media screen and (max-width: 480px) {
     #main {
       padding: 4em 2em 2.5em 2em ;
