@@ -1,3 +1,10 @@
+
+To see finished personal Website: https://luis-c.github.io/
+
+
+This was part of an English assignment details below. 
+-------------------------------------------------------------------
+
 For your assignment, you should modify this template to include your own name, contact information, images, and other relevant information. You should be sure to replace all placeholder content in the index.html file with information specific to your work. The following info is about the theme.
 
 Identity by HTML5 UP
