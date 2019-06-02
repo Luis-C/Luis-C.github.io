@@ -1,7 +1,7 @@
 /* You can add global styles to this file, and also import other style files */
 
 // @import '~@angular/material/prebuilt-themes/indigo-pink.css';
-@import './personal-theme';
+@import './my-dark-theme';
 
 /* Reset -----------------------------------------------------------------------------------------------------------*/
 
@@ -142,13 +142,13 @@ body {
 /* End of RESET -------------------------------------------------------------------------------------*/
 
 :root {
-  --primary: #d50000;
-  --primary-light: #ff5131;
-  --primary-dark: #9b0000;
-  --accent: #00e5ff;
-  --accent-light: #6effff;
-  --accent-dark: #00b2cc;
-  --background: #e0e0e0;
+  --primary: #b71c1c;
+  --primary-light: #f05545;
+  --primary-dark: #7f0000;
+  --accent: #006064;
+  --accent-light: #428e92;
+  --accent-dark: #00363a;
+  --background: #212121;
 }
 
 body {

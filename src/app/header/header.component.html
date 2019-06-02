@@ -1,5 +1,5 @@
-<mat-toolbar color="primary">
-  <nav mat-tab-nav-bar backgroundColor="primary" color="accent">
+<mat-toolbar color="accent">
+  <nav mat-tab-nav-bar color="primary">
     <a
       mat-tab-link
       *ngFor="let link of navLinks"
@@ -11,7 +11,8 @@
       {{ link.label }}
     </a>
   </nav>
-  <button mat-flat-button color="accent">
-    Download Resume
+  <span class="spacer"></span>
+  <button mat-flat-button color="primary">
+    <mat-icon>download</mat-icon> Resume
   </button>
 </mat-toolbar>
