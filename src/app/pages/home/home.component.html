@@ -1,0 +1,62 @@
+<mat-card class="card">
+  <img mat-card-image src="assets/images/avatar.png" alt="profile" />
+  <mat-card-title-group>
+    <mat-card-title>
+      Luis Hernandez
+    </mat-card-title>
+    <mat-card-subtitle>
+      Computer Science | Virginia Tech 2020
+    </mat-card-subtitle>
+  </mat-card-title-group>
+</mat-card>
+
+<mat-card class="card">
+  <mat-card-title>
+    Skills:
+  </mat-card-title>
+  <mat-card-content>
+    <mat-chip-list>
+      <mat-chip color="accent" *ngFor="let skill of skills">{{
+        skill.skill
+      }}</mat-chip>
+    </mat-chip-list>
+  </mat-card-content>
+</mat-card>
+
+<mat-card class="card">
+  <img mat-card-image src="assets/images/avatar2.png" alt="profile" />
+  <mat-card-title>
+    About Me:
+  </mat-card-title>
+  <mat-card-content>
+    Cool description in progress...
+  </mat-card-content>
+</mat-card>
+
+<mat-card class="card">
+  <mat-card-title>
+    Top 5 Strenghts:
+  </mat-card-title>
+  <mat-card-content>
+    <mat-accordion>
+      <mat-expansion-panel *ngFor="let strength of strengths">
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            {{ strength.title }}
+          </mat-panel-title>
+        </mat-expansion-panel-header>
+        {{ strength.description }}
+      </mat-expansion-panel>
+    </mat-accordion>
+  </mat-card-content>
+</mat-card>
+
+<mat-card class="card">
+  <img mat-card-image src="assets/images/avatar3.png" alt="profile" />
+  <mat-card-title>
+    Once Upon a Time...
+  </mat-card-title>
+  <mat-card-content>
+    Cool description in progress...
+  </mat-card-content>
+</mat-card>

@@ -1,0 +1,77 @@
+@import '~@angular/material/theming';
+
+$personal-primary: (
+    50: #d32f2f,
+    100: #ff6659,
+    200: #9a0007,
+    contrast: (
+        50: #ffffff,
+        100: #ffffff,
+        200: #ffffff,
+    )
+);
+
+$personal-accent: (
+    50: #84ffff,
+    100: #baffff,
+    200: #4bcbcc,
+    contrast: (
+        50: #000000,
+        100: #000000,
+        200: #000000,
+    )
+);
+
+
+// Define a custom typography config that overrides the font-family as well as the'Lobster, sans-serif'
+// $cu-typography: mat-typography-config(
+//     $font-family:   'Muli, sans-serif', /* Main Font */
+//     $display-4:     mat-typography-level(112px, 112px, 300, 'Lobster, sans-serif',$letter-spacing: -0.05em),
+//     $display-3:     mat-typography-level(56px, 56px, 400, 'Lobster, sans-serif',$letter-spacing: -0.02em),
+//     $display-2:     mat-typography-level(45px, 48px, 400, 'Lobster, sans-serif' ,$letter-spacing: -0.005em),
+//     $display-1:     mat-typography-level(34px, 40px, 400, 'Lobster, sans-serif'),
+//     $headline:      mat-typography-level(24px, 32px, 400, 'Lobster, sans-serif'), /*h1*/
+//     $title:         mat-typography-level(20px, 32px, 500, 'Lobster, sans-serif'), /*h2*/
+//     $subheading-2:  mat-typography-level(17px, 28px, 400, 'Lobster, sans-serif'), /*h3*/
+//     $subheading-1:  mat-typography-level(16px, 24px, 400, 'Lobster, sans-serif'), /*h4*/
+//     $body-2:        mat-typography-level(14px, 24px, 500),
+//     $body-1:        mat-typography-level(13px, 20px, 400),
+//     $caption:       mat-typography-level(12px, 20px, 400),
+//     $button:        mat-typography-level(14px, 14px, 500, 'Lobster, sans-serif'),
+//     $input:         mat-typography-level(inherit, 1.125, 400)
+// );
+
+// Be sure that you only ever include this mixin once!
+// @include mat-core($cu-typography);
+
+@include mat-core();
+
+// Custom typopgraphy for toolbar typography
+// @include mat-toolbar-typography($Lobster-typography);
+// @include mat-button-typography($Lobster-typography);
+// @include mat-button-toggle-typography($Lobster-typography);
+// @include mat-typography-level-to-styles($Lobster-typography, title);
+// @include mat-tab-link-typography($Lobster-typography);
+
+
+// Define the palettes for your theme using the Material Design palettes available in palette.scss
+// (imported above). For each palette, you can optionally specify a default, lighter, and darker
+// hue. Available color palettes: https://material.io/design/color/
+$personal-theme-primary: mat-palette($personal-primary, 50 , 100, 200);
+
+
+// $cu-theme-accent:  mat-palette($mat-amber, 900);
+// $cu-theme-accent:  mat-palette($mat-blue-gray, 700, 50, 400);
+$personal-theme-accent:  mat-palette($personal-accent, 50 , 100, 200);
+
+
+// The warn palette is optional (defaults to red).
+$personal-theme-warn:    mat-palette($mat-purple);
+
+// Create the theme object (a Sass map containing all of the palettes).
+$personal-theme: mat-light-theme($personal-theme-primary, $personal-theme-accent, $personal-theme-warn);
+
+// Include theme styles for core and each component used in your app.
+// Alternatively, you can import and @include the theme mixins for each component
+// that you are using.
+@include angular-material-theme($personal-theme);
