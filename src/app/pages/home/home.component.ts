@@ -1,10 +1,12 @@
 import { Component, OnInit } from '@angular/core';
+import { slideInStagger } from '../../route-animations';
 
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
-  styleUrls: ['./home.component.scss']
-})
+  styleUrls: ['./home.component.scss'],
+  animations: [slideInStagger]
+  })
 export class HomeComponent implements OnInit {
   skills = [
     { skill: 'HTML', link: '' },
