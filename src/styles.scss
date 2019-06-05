@@ -1,7 +1,7 @@
 /* You can add global styles to this file, and also import other style files */
 
 // @import '~@angular/material/prebuilt-themes/purple-green';
-@import './my-dark-theme';
+@import 'assets/themes/my-dark-theme.scss';
 
 /* Reset -----------------------------------------------------------------------------------------------------------*/
 
@@ -154,7 +154,6 @@ body {
 html {
   width: 100%;
   min-width: 320px;
-  background-color: var(--accent-dark);
 }
 
 body {
@@ -171,7 +170,8 @@ a {
   color: white;
   font-weight: bold;
 }
-/* SCROLLBAR */
+
+/* SCROLLBAR ------------------------------------------------------------------------------------------------------ */
 
 /* width */
 
