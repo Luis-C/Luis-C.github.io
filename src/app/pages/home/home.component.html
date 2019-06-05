@@ -1,0 +1,81 @@
+<div [@arrayAnimation] class="container">
+  <mat-card class="card">
+    <img mat-card-image src="assets/images/avatar.png" alt="profile" />
+    <mat-card-title-group>
+      <mat-card-title>
+        Luis Hernandez
+      </mat-card-title>
+      <mat-card-subtitle>
+        Computer Science | Virginia Tech 2020
+      </mat-card-subtitle>
+    </mat-card-title-group>
+    <mat-divider></mat-divider>
+    <mat-card-content>
+      Interested in Cybersecurity, Machine Learning, App development, and
+      happiness.
+    </mat-card-content>
+  </mat-card>
+
+  <mat-card class="card">
+    <mat-card-title>
+      Skills:
+    </mat-card-title>
+    <mat-divider></mat-divider>
+    <br />
+    <mat-card-content>
+      <mat-chip-list>
+        <mat-chip color="accent" selected *ngFor="let skill of skills">{{
+          skill.skill
+        }}</mat-chip>
+      </mat-chip-list>
+    </mat-card-content>
+  </mat-card>
+
+  <mat-card class="card">
+    <img mat-card-image src="assets/images/avatar2.png" alt="profile" />
+    <mat-card-title>
+      About Me:
+    </mat-card-title>
+    <mat-divider></mat-divider>
+    <br />
+    <mat-card-content> </mat-card-content>
+  </mat-card>
+
+  <mat-card class="card">
+    <mat-card-title>
+      Top Clifton Strenghts:
+    </mat-card-title>
+    <mat-divider></mat-divider>
+    <br />
+    <mat-card-content>
+      <mat-accordion>
+        <mat-expansion-panel *ngFor="let strength of strengths; index as i">
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              {{ i + 1 }} - {{ strength.title }}
+            </mat-panel-title>
+          </mat-expansion-panel-header>
+
+          <ng-template matExpansionPanelContent>
+            {{ strength.description }}
+          </ng-template>
+        </mat-expansion-panel>
+      </mat-accordion>
+    </mat-card-content>
+  </mat-card>
+
+  <mat-card class="card">
+    <img mat-card-image src="assets/images/avatar3.png" alt="profile" />
+    <mat-card-title>
+      Once Upon a Time...
+    </mat-card-title>
+    <mat-divider></mat-divider>
+    <mat-card-content>
+      I was born in the land of opportunity, raised with Mexican heritage and
+      cursed with curiosity. <br />
+      <br />
+      Now I roam this earthly realm learning about the world that surrounds me,
+      pondering about how to improve it and myself.
+    </mat-card-content>
+  </mat-card>
+</div>

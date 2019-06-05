@@ -1,0 +1,10 @@
+.footer {
+  display: flex;
+  justify-content: center;
+  overflow: auto;
+}
+
+.mat-icon-button:hover {
+  transform: scale(1.1) rotate(360deg);
+  transition: .4s;
+}
