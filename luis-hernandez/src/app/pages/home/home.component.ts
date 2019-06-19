@@ -25,6 +25,8 @@ export class HomeComponent implements OnInit {
     { skill: 'Python', link: '' },
     { skill: 'PuTTY', link: '' },
     { skill: 'Office', link: '' },
+    { skill: 'VM VirtualBox', link: '' },
+    { skill: 'PowerShell', link: '' },
     // { skill: '', link: '' },
   ];
 
