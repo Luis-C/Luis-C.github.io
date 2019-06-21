@@ -9,3 +9,10 @@
   height: 470px;
   margin: 5px;
 }
+
+@media only screen and (max-width: 700px) {
+  .card {
+    width: 100vw;
+    height: auto;
+  }
+}
