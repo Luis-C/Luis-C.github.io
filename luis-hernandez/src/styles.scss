@@ -141,15 +141,14 @@ body {
 
 /* End of RESET -------------------------------------------------------------------------------------*/
 
-:root {
-  --primary: #b71c1c;
-  --primary-light: #f05545;
-  --primary-dark: #7f0000;
-  --accent: #006064;
-  --accent-light: #428e92;
-  --accent-dark: #00363a;
-  --background: #212121;
-}
+/* Color variables */
+$primary: #b71c1c;
+$primary-light: #f05545;
+$primary-dark: #7f0000;
+$accent: #006064;
+$accent-light: #428e92;
+$accent-dark: #00363a;
+$background: #212121;
 
 html {
   width: 100%;
@@ -158,7 +157,7 @@ html {
 
 body {
   min-width: 320px;
-  background-color: var(--background);
+  background-color: $background;
 }
 
 .content {
@@ -181,24 +180,24 @@ a {
 }
 
 /* Track */
-
-::-webkit-scrollbar-track {
-  background: var(--primary-dark);
-}
+// Hidden
+// ::-webkit-scrollbar-track {
+//   background: var(--primary-dark);
+// }
 
 /* Handle */
 
 ::-webkit-scrollbar-thumb {
-  background: var(--accent);
+  background: $primary;
   border-radius: 10px;
 }
 
 /* Handle on hover */
 
 ::-webkit-scrollbar-thumb:hover {
-  background: var(--accent-dark);
+  background: $primary-dark;
 }
 
 ::-webkit-scrollbar-corner {
-  background: var(--background);
+  background: $background;
 }
