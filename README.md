@@ -4,4 +4,4 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 
 ## Build using:
 
-`ng b --prod --aot=true --buildOptimizer=true --outputPath=../dist/ --baseHref="/"`
+`ng b --prod --aot=true --buildOptimizer=true --outputPath=../dist/ --baseHref="https://luis-c.github.io/"`
