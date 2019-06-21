@@ -142,12 +142,12 @@ body {
 /* End of RESET -------------------------------------------------------------------------------------*/
 
 /* Color variables */
-$primary: #b71c1c;
-$primary-light: #f05545;
-$primary-dark: #7f0000;
-$accent: #006064;
-$accent-light: #428e92;
-$accent-dark: #00363a;
+$primary: #d50000;
+$primary-light: #ff5131;
+$primary-dark: #9b0000;
+$accent: #ffecb3;
+$accent-light: #ffffe5;
+$accent-dark: #cbba83;
 $background: #212121;
 
 html {
@@ -188,14 +188,14 @@ a {
 /* Handle */
 
 ::-webkit-scrollbar-thumb {
-  background: $primary;
+  background: $accent;
   border-radius: 10px;
 }
 
 /* Handle on hover */
 
 ::-webkit-scrollbar-thumb:hover {
-  background: $primary-dark;
+  background: $accent-dark;
 }
 
 ::-webkit-scrollbar-corner {

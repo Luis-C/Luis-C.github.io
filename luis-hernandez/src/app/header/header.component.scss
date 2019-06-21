@@ -4,4 +4,7 @@
 
 .header {
   overflow: auto;
+  position: sticky;
+  top: 0; // required for sticky to work
+  z-index: 100;
 }
