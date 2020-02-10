@@ -7,4 +7,6 @@
   position: sticky;
   top: 0; // required for sticky to work
   z-index: 100;
+  background-color: rgba($color: #d50000, $alpha: 0.6);
+  backdrop-filter: blur(10px);
 }
