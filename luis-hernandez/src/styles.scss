@@ -1,7 +1,7 @@
 /* You can add global styles to this file, and also import other style files */
 
 // @import '~@angular/material/prebuilt-themes/purple-green';
-@import 'assets/themes/my-dark-theme.scss';
+@import "assets/themes/my-dark-theme.scss";
 
 /* Reset -----------------------------------------------------------------------------------------------------------*/
 
@@ -126,7 +126,7 @@ blockquote:before,
 blockquote:after,
 q:before,
 q:after {
-  content: '';
+  content: "";
   content: none;
 }
 
