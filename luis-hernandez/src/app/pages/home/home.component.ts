@@ -33,6 +33,21 @@ export class HomeComponent implements OnInit {
     // { skill: '', link: '' },
   ];
 
+  courses = [
+    { course: "Crime & Conflict in Cyberspace", id: "BIT 5114" },
+    { course: "Federal Cybersecurity Policy", id: "SPIA 4374" },
+    { course: "CyberLeaders Capstone (Machine Learning)", id: "SPIA 4724" },
+    { course: "Internet Law", id: "FIN 4014" },
+    { course: "Computer Security", id: "" },
+    { course: "Machine Learning", id: "" },
+    { course: "Mobile Software Development", id: "" },
+    { course: "Cloud Software Development", id: "" },
+    { course: "Systems and Networking Capstone (Blockchain)", id: "" },
+    { course: "Computer Music", id: "" },
+    { course: "Linux Laptop Orchestra", id: "" }
+    // { course: "", id: "" }
+  ];
+
   strengths = [
     {
       title: "Learner",

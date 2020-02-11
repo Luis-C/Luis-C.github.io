@@ -1,7 +1,7 @@
 <div class="container">
   <!-- [@arrayAnimation]  -->
   <mat-card class="card">
-    <img mat-card-image src="assets/images/avatar.png" alt="profile" />
+    <img mat-card-image src="assets/images/avatar2.png" alt="profile" />
     <mat-card-title-group>
       <mat-card-title>
         Luis Hernandez
@@ -33,15 +33,16 @@
   </mat-card>
 
   <mat-card class="card">
-    <img mat-card-image src="assets/images/avatar2.png" alt="profile" />
-    <mat-card-title>
+    <img mat-card-image src="assets/images/avatar.png" alt="profile" />
+    <!-- <mat-card-title>
       About Me:
-    </mat-card-title>
+    </mat-card-title> -->
     <mat-divider></mat-divider>
     <br />
     <mat-card-content>
       For college I took three different Myers Briggs personality tests, 3/3
-      conclude I'm an INTJ.
+      conclude I'm an INTJ. My peers would describe me as analytical. I'm a nerd
+      with a sense of humor.
     </mat-card-content>
   </mat-card>
 
@@ -80,6 +81,24 @@
       <br />
       Now I roam this earthly realm learning about the world that surrounds me,
       pondering about how to improve it and myself.
+    </mat-card-content>
+  </mat-card>
+
+  <mat-card class="card">
+    <mat-card-title>
+      Additional Courses:
+    </mat-card-title>
+    <mat-card-subtitle>
+      Beyond the standard curriculum.
+    </mat-card-subtitle>
+    <mat-divider></mat-divider>
+    <br />
+    <mat-card-content>
+      <mat-chip-list>
+        <mat-chip color="accent" selected *ngFor="let course of courses">{{
+          course.course
+        }}</mat-chip>
+      </mat-chip-list>
     </mat-card-content>
   </mat-card>
 </div>
