@@ -8,4 +8,4 @@ personal website.
 
 ## Build using:
 
-`ng b --prod --aot=true --buildOptimizer=true --outputPath=../docs/ --baseHref="https://luis-c.github.io/"`
+`ng b --prod --outputPath=../docs/ --baseHref="https://luis-c.github.io/"`
