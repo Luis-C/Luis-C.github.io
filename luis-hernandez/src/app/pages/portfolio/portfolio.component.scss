@@ -1,3 +1,5 @@
+@import "~@angular/material/theming";
+
 .container {
   display: flex;
   flex-wrap: wrap;
@@ -8,6 +10,14 @@
   display: inline-block;
   max-width: 300px;
   margin: 1em 2px 2px 2px;
+
+  transition: 0.5s;
+
+  &:hover {
+    @include mat-elevation(12);
+    background-color: rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(15px);
+  }
 }
 
 .audio {
