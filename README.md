@@ -9,3 +9,5 @@ personal website.
 ## Build using:
 
 `ng b --prod --outputPath=../docs/ --baseHref="https://luis-c.github.io/"`
+
+don't forget to replace the 404.html files
