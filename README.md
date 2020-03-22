@@ -10,4 +10,6 @@ personal website.
 
 `ng b --prod --outputPath=../docs/ --baseHref="https://luis-c.github.io/"`
 
-don't forget to replace the 404.html files
+## Note:
+
+Don't forget to replace the 404.html files
