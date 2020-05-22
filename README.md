@@ -4,7 +4,7 @@
 
 `ng b --prod --outputPath=../docs/ --baseHref="https://luis-c.github.io/"`
 
-## Note:
+# Notes:
 
 - Don't forget to replace the 404.html files
 
