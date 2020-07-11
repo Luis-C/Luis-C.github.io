@@ -10,10 +10,11 @@ import { slideInStagger } from "../../route-animations";
 export class PortfolioComponent implements OnInit {
   codeProjects = [
     {
-      title: "testname",
-      details: "test info",
+      title: "Test Title",
+      details: "This was a really cool project becase. etc. Cool stuff",
       imgSrc: "assets/images/cu.png",
       codeSrc: "https://github.com/Luis-C/Luis-C.github.io",
+      example: "https://luis-c.github.io/SheHacks-VT/home",
     },
   ];
 
