@@ -1,5 +1,12 @@
 <!-- [@arrayAnimation]  -->
 <div class="container">
+  <mat-card class="item" *ngFor="let project of codeProjects">
+    <img mat-card-image [src]="project.imgSrc" alt="CaughtUp" />
+    <mat-card-title>{{ project.title }}</mat-card-title>
+    <p>{{ project.details }}</p>
+    <a mat-stroked-button [href]="project.codeSrc">GitHub</a>
+  </mat-card>
+
   <mat-card class="item">
     <img mat-card-image src="assets/images/cu.png" alt="CaughtUp" />
     <mat-card-title>
