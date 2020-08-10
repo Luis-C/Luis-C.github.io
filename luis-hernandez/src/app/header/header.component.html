@@ -8,16 +8,20 @@
       #rla="routerLinkActive"
       [active]="rla.isActive"
     >
-      {{ link.label }}
+      <div *ngIf="link.icon">
+        <mat-icon>{{ link.icon }}</mat-icon>
+      </div>
+      <div *ngIf="!link.icon">{{ link.label }}</div>
     </a>
   </nav>
   <span class="spacer"></span>
+
   <a
-    mat-flat-button
+    mat-raised-button
     color="accent"
     href="https://drive.google.com/open?id=1lYAr1FHSi0Fh0gX4MhRFFBFPemlKZ56m"
     target="_blank"
   >
-    <mat-icon>visibility</mat-icon> Resume
+    RESUME
   </a>
 </mat-toolbar>

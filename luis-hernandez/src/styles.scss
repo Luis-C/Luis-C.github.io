@@ -158,7 +158,8 @@ html {
 body {
   min-width: 320px;
   //   background-color: $background;
-  background-image: url("assets/images/bg.png");
+  background-image: url("assets/images/bg.jpg");
+  background-repeat: no-repeat;
 }
 
 .content {
@@ -205,5 +206,5 @@ a {
 
 .mat-card {
   background-color: rgba(0, 0, 0, 0.452);
-  backdrop-filter: blur(5px);
+  backdrop-filter: blur(10px);
 }
