@@ -1,5 +1,7 @@
 # [Personal Website](https://luis-c.github.io)
 
+This is the repository for my personal website which is currently built in Angular. 
+
 ## Build using:
 
 `ng b --prod --outputPath=../docs/ --baseHref="https://luis-c.github.io/"`
