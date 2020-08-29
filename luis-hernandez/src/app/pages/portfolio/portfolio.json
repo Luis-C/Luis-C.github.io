@@ -77,5 +77,23 @@
     ],
     "imgSrc": "assets/images/hack3.png",
     "view": "https://luis-c.github.io/SheHacks-VT/home"
+  },
+  {
+    "title": "CryptoGuard",
+    "paragraphs": [
+      "An android application that scans APK's in search of vulnerabilities.",
+      "This was project for my Security Fundamentals Class."
+    ],
+    "imgSrc": "assets/images/placeholder.png",
+    "github": "https://github.com/Sllarsen/Principles-Of-Security-Server"
+  },
+  {
+    "title": "Code Art",
+    "paragraphs": [
+      "Personal project were I experiment with React",
+      "More info to come once the project is finished"
+    ],
+    "imgSrc": "assets/images/placeholder.png",
+    "github": "https://github.com/Luis-C/Code-Art"
   }
 ]
