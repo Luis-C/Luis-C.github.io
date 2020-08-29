@@ -5,7 +5,7 @@
       "Founding member and Software Engineer",
       "This startup is designed to motivate us to dive into new projects in the pursuit of knowledge and the common good."
     ],
-    "imgSrc": "assets/images/cu.png",
+    "imgSrc": "assets/images/cu-logo.png",
     "codeSrc": "https://github.com/Luis-C/Luis-C.github.io",
     "example": "https://luis-c.github.io/SheHacks-VT/home"
   },
@@ -16,7 +16,7 @@
       "Built on Angular with a Firebase backend. I've learned a lot while developing this project.",
       "Currently the goal is to improve the design to improve UI/UX."
     ],
-    "imgSrc": "assets/images/cu-logo.png",
+    "imgSrc": "assets/images/cu-web-app.png",
     "view": "https://caughtup.web.app"
   },
   {
@@ -56,7 +56,7 @@
   {
     "title": "Sentanal",
     "paragraphs": [
-      "Sentanal was a basic Sentiment Analysis project designed to provide insights towards the truthfullness of a news article based on word frequency.",
+      "A basic Sentiment Analysis project designed to provide insights towards the truthfullness of a news article based on word frequency.",
       "As a team we compared the accuracy of two Naive Bayes Classifiers which we implemented utlizing two different Python libraries, TextBlob and NLTK."
     ],
     "imgSrc": "assets/images/sentanal.png",
@@ -69,5 +69,13 @@
     ],
     "imgSrc": "assets/images/housing.png",
     "view": "https://studenthousing.vttw.org/"
+  },
+  {
+    "title": "SheHacks VT Hackathon",
+    "paragraphs": [
+      "Had fun creating a front end for MakeMeGo a small hackathon idea about using geolocation to check-into events and goals."
+    ],
+    "imgSrc": "assets/images/hack3.png",
+    "view": "https://luis-c.github.io/SheHacks-VT/home"
   }
 ]
