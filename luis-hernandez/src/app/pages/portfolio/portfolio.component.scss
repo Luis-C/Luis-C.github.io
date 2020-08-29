@@ -5,8 +5,14 @@
   flex-wrap: wrap;
   justify-content: center;
   overflow: auto;
+
   padding-top: 70px;
-  height: 100vh;
+  padding-bottom: 70px;
+
+  height: calc(100vh - 140px);
+
+  max-width: 1440px;
+  margin: auto;
 }
 
 .item {
