@@ -29,6 +29,15 @@
     "view": "https://caughtup-parser.firebaseapp.com/home"
   },
   {
+    "title": "This Website",
+    "paragraphs": [
+      "It Started as a project for my Technical Writing class.",
+      "I wasn't fully pleased with sticking to a template. So, I decided to re-do the project utilizing new skills such as Angular."
+    ],
+    "imgSrc": "assets/images/website.png",
+    "github": "https://github.com/Luis-C/Luis-C.github.io"
+  },
+  {
     "title": "Student Housing Guide",
     "paragraphs": [
       "The class project was to design a website to help upcoming alumni in search of student housing. To do so, we conducted research on different common choices and created a site aggregate."
