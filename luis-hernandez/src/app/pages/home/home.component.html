@@ -3,9 +3,7 @@
   <mat-card class="card">
     <img mat-card-image src="assets/images/avatar2.png" alt="profile" />
     <mat-card-title-group>
-      <mat-card-title>
-        Luis Hernandez
-      </mat-card-title>
+      <mat-card-title> Luis Hernandez </mat-card-title>
       <mat-card-subtitle>
         Computer Science | Virginia Tech 2020
       </mat-card-subtitle>
@@ -18,38 +16,30 @@
   </mat-card>
 
   <mat-card class="card">
-    <mat-card-title>
-      Skills:
-    </mat-card-title>
+    <mat-card-title> Skills: </mat-card-title>
     <mat-divider></mat-divider>
     <br />
     <mat-card-content>
       <mat-chip-list>
-        <mat-chip color="accent" selected *ngFor="let skill of skills">{{
-          skill.skill
-        }}</mat-chip>
+        <mat-chip
+          color="accent"
+          selected
+          *ngFor="let skill of skills"
+          [matTooltip]="skill.skill"
+        >
+          <fa-icon
+            *ngIf="skill.icon"
+            [icon]="['fab', skill.icon]"
+            size="2x"
+          ></fa-icon>
+          <span *ngIf="!skill.icon">{{ skill.skill }}</span>
+        </mat-chip>
       </mat-chip-list>
     </mat-card-content>
   </mat-card>
 
   <mat-card class="card">
-    <img mat-card-image src="assets/images/avatar.png" alt="profile" />
-    <!-- <mat-card-title>
-      About Me:
-    </mat-card-title> -->
-    <mat-divider></mat-divider>
-    <br />
-    <mat-card-content>
-      For college I took three different Myers Briggs personality tests, 3/3
-      conclude I'm an INTJ. My peers would describe me as analytical. I'm a nerd
-      with a sense of humor.
-    </mat-card-content>
-  </mat-card>
-
-  <mat-card class="card">
-    <mat-card-title>
-      Top Clifton Strenghts:
-    </mat-card-title>
+    <mat-card-title> Top Clifton Strenghts: </mat-card-title>
     <mat-divider></mat-divider>
     <br />
     <mat-card-content>
@@ -70,10 +60,22 @@
   </mat-card>
 
   <mat-card class="card">
+    <img mat-card-image src="assets/images/avatar.png" alt="profile" />
+    <!-- <mat-card-title>
+      About Me:
+    </mat-card-title> -->
+    <mat-divider></mat-divider>
+    <br />
+    <mat-card-content>
+      For college I took three different Myers Briggs personality tests, 3/3
+      conclude I'm an INTJ. My peers would describe me as analytical. I'm a nerd
+      with a sense of humor.
+    </mat-card-content>
+  </mat-card>
+
+  <mat-card class="card">
     <img mat-card-image src="assets/images/avatar3.png" alt="profile" />
-    <mat-card-title>
-      Once Upon a Time...
-    </mat-card-title>
+    <mat-card-title> Once Upon a Time... </mat-card-title>
     <mat-divider></mat-divider>
     <mat-card-content>
       I was born in the land of opportunity, raised with Mexican heritage and
@@ -85,20 +87,72 @@
   </mat-card>
 
   <mat-card class="card">
-    <mat-card-title>
-      Additional Courses:
-    </mat-card-title>
-    <mat-card-subtitle>
-      Beyond the standard curriculum.
-    </mat-card-subtitle>
+    <mat-card-title> Additional Courses: </mat-card-title>
+    <mat-card-subtitle> Beyond the standard curriculum. </mat-card-subtitle>
     <mat-divider></mat-divider>
     <br />
     <mat-card-content>
       <mat-chip-list>
-        <mat-chip color="accent" selected *ngFor="let course of courses">{{
-          course.course
-        }}</mat-chip>
+        <mat-chip
+          color="accent"
+          selected
+          *ngFor="let course of courses"
+          [matTooltip]="course.id"
+          >{{ course.course }}</mat-chip
+        >
       </mat-chip-list>
+    </mat-card-content>
+  </mat-card>
+
+  <!-- OTHER INFO -->
+
+  <mat-card class="card">
+    <img mat-card-image src="assets/images/cyberleaders.png" alt="" />
+    <mat-card-title> Cybersecurity </mat-card-title>
+
+    <mat-card-content>
+      The
+      <a href="https://www.hume.vt.edu/cyberlead" target="_blank"
+        >CyberLeaders program</a
+      >
+      is designed to help students broaden their understanding of policy,
+      regulation, and the engineering challenges in cybersecurity. <br />
+      <br />
+      The semester-long Capstone Research program involved an interdisciplinary
+      discussion of the nature of "Fake News," and the potential use of Machine
+      Learning to mitigate the issue.
+    </mat-card-content>
+  </mat-card>
+
+  <mat-card class="card">
+    <img mat-card-image src="assets/images/culture.png" alt="" />
+    <mat-card-title> Language and Culture </mat-card-title>
+    <mat-card-content>
+      Due to my ethnical background I've had experience living abroad in Mexico.
+      I'm fully bilingual with 10+ years of experience with Spanish.
+    </mat-card-content>
+  </mat-card>
+
+  <mat-card class="card">
+    <img mat-card-image src="assets/images/drawing.png" alt="" />
+    <mat-card-title> Drawing </mat-card-title>
+    <mat-card-content>
+      I aim for a high standard of creativty and passion in everything I do. I
+      have experience with graphical software such as Clip Studio, Corel
+      Painter, and Photoshop.
+    </mat-card-content>
+  </mat-card>
+
+  <mat-card class="card">
+    <img mat-card-image src="assets/images/dragon.png" alt="" />
+    <mat-card-title> Dragon Boat </mat-card-title>
+    <mat-card-content>
+      There are no star players in Dragon Boat, victory is achieved through
+      determination, discipline, and team-work. <br />
+      <br />
+      I've had the honor of representing the United States during the 2015 World
+      Championships earning two bronze medals for the 500m and 2000m races
+      (Under 18 division).
     </mat-card-content>
   </mat-card>
 </div>

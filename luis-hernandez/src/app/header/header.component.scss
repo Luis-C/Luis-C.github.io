@@ -4,9 +4,14 @@
 
 .header {
   overflow: auto;
-  position: sticky;
+  position: absolute;
   top: 0; // required for sticky to work
   z-index: 100;
   background-color: rgba($color: #d50000, $alpha: 0.6);
   backdrop-filter: blur(10px);
+}
+
+.mat-icon-button:hover {
+  transform: scale(1.1) rotate(360deg);
+  transition: 0.4s;
 }

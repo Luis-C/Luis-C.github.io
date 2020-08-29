@@ -1,0 +1,108 @@
+[
+  {
+    "title": "CaughtUp LLC",
+    "paragraphs": [
+      "Founding member and Software Engineer",
+      "This startup is designed to motivate us to dive into new projects in the pursuit of knowledge and the common good."
+    ],
+    "imgSrc": "assets/images/cu-logo.png",
+    "codeSrc": "https://github.com/Luis-C/Luis-C.github.io",
+    "example": "https://luis-c.github.io/SheHacks-VT/home"
+  },
+  {
+    "title": "CaughtUp Web App",
+    "paragraphs": [
+      "One of my main projects for CaughtUp has been the development of our Web App.",
+      "Built on Angular with a Firebase backend. I've learned a lot while developing this project.",
+      "Currently the goal is to improve the design to improve UI/UX."
+    ],
+    "imgSrc": "assets/images/cu-web-app.png",
+    "view": "https://caughtup.web.app"
+  },
+  {
+    "title": "CaughtUp Event Parser",
+    "paragraphs": [
+      "This project was part of the VT Hacks Hackathon",
+      "We wanted to make scheduling easier. The android, iOS, and web application allows users to upload or take a photo with their camera and we create a calendar event for them."
+    ],
+    "imgSrc": "assets/images/eventParser.png",
+    "view": "https://caughtup-parser.firebaseapp.com/home"
+  },
+  {
+    "title": "This Website",
+    "paragraphs": [
+      "It Started as a project for my Technical Writing class.",
+      "I wasn't fully pleased with sticking to a template. So, I decided to re-do the project utilizing new skills such as Angular."
+    ],
+    "imgSrc": "assets/images/website.png",
+    "github": "https://github.com/Luis-C/Luis-C.github.io"
+  },
+  {
+    "title": "Candidates",
+    "paragraphs": [
+      "Wouldn't it be funny if recruiters had to apply for a job candidate? This is a full-stack project designed for my cloud software development class"
+    ],
+    "imgSrc": "assets/images/candidates.png",
+    "github": "https://github.com/Luis-C/Candidates"
+  },
+  {
+    "title": "Spot-Block",
+    "paragraphs": [
+      "Senior Capstone Project: My task is to build a front end for a blockhain application. Bid, buy and sell parking spots using smart contracts!"
+    ],
+    "imgSrc": "assets/images/spot-block.png",
+    "github": "https://github.com/Luis-C/Spot-Block"
+  },
+  {
+    "title": "Jitter Neural Network",
+    "paragraphs": [
+      "Max Jitter is usually used for video processing. However, by researching the fundamentals of Neural Networks and sprinkling some Javascript I found a creative way to utilize the software to make a visual representation of a Neural Network."
+    ],
+    "imgSrc": "assets/images/jitterNN.png",
+    "github": "https://github.com/Luis-C/NeuralNetwork_Jitter-MaxMSP"
+  },
+  {
+    "title": "Sentanal",
+    "paragraphs": [
+      "A basic Sentiment Analysis project designed to provide insights towards the truthfullness of a news article based on word frequency.",
+      "As a team we compared the accuracy of two Naive Bayes Classifiers which we implemented utlizing two different Python libraries, TextBlob and NLTK."
+    ],
+    "imgSrc": "assets/images/sentanal.png",
+    "github": "https://github.com/Luis-C/Sentanal"
+  },
+  {
+    "title": "Student Housing Guide",
+    "paragraphs": [
+      "The class project was to design a website to help upcoming alumni in search of student housing. To do so, we conducted research on different common choices and created a site aggregate."
+    ],
+    "imgSrc": "assets/images/housing.png",
+    "view": "https://studenthousing.vttw.org/"
+  },
+  {
+    "title": "SheHacks VT Hackathon",
+    "paragraphs": [
+      "Had fun creating a front end for MakeMeGo a small hackathon idea about using geolocation to check-into events and goals."
+    ],
+    "imgSrc": "assets/images/hack3.png",
+    "view": "https://luis-c.github.io/SheHacks-VT/home"
+  },
+
+  {
+    "title": "CryptoGuard",
+    "paragraphs": [
+      "An android application that scans APK's in search of vulnerabilities.",
+      "This was project for my Security Fundamentals Class."
+    ],
+    "imgSrc": "assets/images/placeholder.png",
+    "github": "https://github.com/Sllarsen/Principles-Of-Security-Server"
+  },
+  {
+    "title": "Code Art",
+    "paragraphs": [
+      "Personal project were I experiment with React",
+      "More info to come once the project is finished"
+    ],
+    "imgSrc": "assets/images/placeholder.png",
+    "github": "https://github.com/Luis-C/Code-Art"
+  }
+]
