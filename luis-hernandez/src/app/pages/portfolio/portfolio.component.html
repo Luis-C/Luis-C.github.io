@@ -4,10 +4,25 @@
     <img mat-card-image [src]="project.imgSrc" alt="CaughtUp" />
     <mat-card-title>{{ project.title }}</mat-card-title>
     <p *ngFor="let paragraph of project.paragraphs">{{ paragraph }}</p>
-    <a *ngIf="project.codeSrc" mat-stroked-button [href]="project.codeSrc"
-      >GitHub</a
-    >
-    <a mat-stroked-button [href]="project.view">View</a>
+
+    <mat-card-actions>
+      <a
+        *ngIf="project.github"
+        mat-stroked-button
+        [href]="project.github"
+        target="_blank"
+      >
+        GitHub
+      </a>
+      <a
+        *ngIf="project.view"
+        mat-stroked-button
+        [href]="project.view"
+        target="_blank"
+      >
+        View
+      </a>
+    </mat-card-actions>
   </mat-card>
 
   <!-- <mat-card class="item">
@@ -46,7 +61,7 @@
     </mat-card-content>
   </mat-card> -->
 
-  <mat-card class="item">
+  <!-- <mat-card class="item">
     <img mat-card-image src="assets/images/eventParser.png" alt="" />
     <mat-card-title> VT Hacks 7</mat-card-title>
     <mat-card-content>
@@ -56,6 +71,49 @@
       <br /><br />
       Check it out:
       <a href="https://caughtup-parser.firebaseapp.com/home"> Event Parser </a>
+    </mat-card-content>
+  </mat-card> -->
+
+  <!-- <mat-card class="item">
+    <img mat-card-image src="assets/images/placeholder.png" alt="" />
+    <mat-card-title> Candidates </mat-card-title>
+    <mat-card-content>
+      Wouldn't it be funny if recruiters had to apply for a job candidate? This
+      is a full-stack project designed for my cloud software development class.
+      <br /><br />
+      More info to come once the project is finished.
+    </mat-card-content>
+  </mat-card> -->
+  <!-- 
+  <mat-card class="item">
+    <img mat-card-image src="assets/images/placeholder.png" alt="" />
+    <mat-card-title> Spot-Block</mat-card-title>
+    <mat-card-content>
+      Senior Capstone Project: My task is to build a front end for a blockhain
+      application. Bid, buy and sell parking spots using smart contracts!
+      <br /><br />
+      More info to come once the project is finished.
+    </mat-card-content>
+  </mat-card> -->
+
+  <mat-card class="item">
+    <img mat-card-image src="assets/images/placeholder.png" alt="" />
+    <mat-card-title> CryptoGuard</mat-card-title>
+    <mat-card-content>
+      An android application that scans APK's in search of vulnerabilities. My
+      current task is to help with the development of the Flask back end.
+      <br /><br />
+      More info to come once the project is finished.
+    </mat-card-content>
+  </mat-card>
+
+  <mat-card class="item">
+    <img mat-card-image src="assets/images/placeholder.png" alt="" />
+    <mat-card-title> Code Art </mat-card-title>
+    <mat-card-content>
+      Personal project were I experiment with react and Flask
+      <br /><br />
+      More info to come once the project is finished.
     </mat-card-content>
   </mat-card>
 
@@ -142,49 +200,6 @@
   </mat-card>
 
   <mat-card class="item">
-    <img mat-card-image src="assets/images/placeholder.png" alt="" />
-    <mat-card-title> Candidates </mat-card-title>
-    <mat-card-content>
-      Wouldn't it be funny if recruiters had to apply for a job candidate? This
-      is a full-stack project designed for my cloud software development class.
-      <br /><br />
-      More info to come once the project is finished.
-    </mat-card-content>
-  </mat-card>
-
-  <mat-card class="item">
-    <img mat-card-image src="assets/images/placeholder.png" alt="" />
-    <mat-card-title> Spot-Block</mat-card-title>
-    <mat-card-content>
-      Senior Capstone Project: My task is to build a front end for a blockhain
-      application. Bid, buy and sell parking spots using smart contracts!
-      <br /><br />
-      More info to come once the project is finished.
-    </mat-card-content>
-  </mat-card>
-
-  <mat-card class="item">
-    <img mat-card-image src="assets/images/placeholder.png" alt="" />
-    <mat-card-title> CryptoGuard</mat-card-title>
-    <mat-card-content>
-      An android application that scans APK's in search of vulnerabilities. My
-      current task is to help with the development of the Flask back end.
-      <br /><br />
-      More info to come once the project is finished.
-    </mat-card-content>
-  </mat-card>
-
-  <mat-card class="item">
-    <img mat-card-image src="assets/images/placeholder.png" alt="" />
-    <mat-card-title> Code Art </mat-card-title>
-    <mat-card-content>
-      Personal project were I experiment with react and Flask
-      <br /><br />
-      More info to come once the project is finished.
-    </mat-card-content>
-  </mat-card>
-
-  <mat-card class="item">
     <img mat-card-image src="assets/images/linux.png" alt="" />
     <mat-card-title> Linux Laptop Orchestra (L2Ork) </mat-card-title>
     <mat-card-content>
@@ -228,7 +243,7 @@
     </mat-card-content>
   </mat-card>
 
-  <mat-card class="item">
+  <!-- <mat-card class="item">
     <img mat-card-image src="assets/images/housing.png" alt="" />
     <mat-card-title> Student Housing Guide </mat-card-title>
 
@@ -238,7 +253,7 @@
       help upcoming alumni in search of student housing. To do so, we conducted
       research on different common choices and created a site aggregate.
     </mat-card-content>
-  </mat-card>
+  </mat-card> -->
 
   <mat-card class="item">
     <img mat-card-image src="assets/images/hack1.png" alt="" />
