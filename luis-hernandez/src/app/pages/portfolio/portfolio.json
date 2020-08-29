@@ -54,6 +54,14 @@
     "github": "https://github.com/Luis-C/Spot-Block"
   },
   {
+    "title": "Jitter Neural Network",
+    "paragraphs": [
+      "Max Jitter is usually used for video processing. However, by researching the fundamentals of Neural Networks and sprinkling some Javascript I found a creative way to utilize the software to make a visual representation of a Neural Network."
+    ],
+    "imgSrc": "assets/images/jitterNN.png",
+    "github": "https://github.com/Luis-C/NeuralNetwork_Jitter-MaxMSP"
+  },
+  {
     "title": "Sentanal",
     "paragraphs": [
       "A basic Sentiment Analysis project designed to provide insights towards the truthfullness of a news article based on word frequency.",
@@ -78,6 +86,7 @@
     "imgSrc": "assets/images/hack3.png",
     "view": "https://luis-c.github.io/SheHacks-VT/home"
   },
+
   {
     "title": "CryptoGuard",
     "paragraphs": [

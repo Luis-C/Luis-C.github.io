@@ -21,7 +21,12 @@
     <br />
     <mat-card-content>
       <mat-chip-list>
-        <mat-chip color="accent" selected *ngFor="let skill of skills">
+        <mat-chip
+          color="accent"
+          selected
+          *ngFor="let skill of skills"
+          [matTooltip]="skill.skill"
+        >
           <fa-icon
             *ngIf="skill.icon"
             [icon]="['fab', skill.icon]"
@@ -30,20 +35,6 @@
           <span *ngIf="!skill.icon">{{ skill.skill }}</span>
         </mat-chip>
       </mat-chip-list>
-    </mat-card-content>
-  </mat-card>
-
-  <mat-card class="card">
-    <img mat-card-image src="assets/images/avatar.png" alt="profile" />
-    <!-- <mat-card-title>
-      About Me:
-    </mat-card-title> -->
-    <mat-divider></mat-divider>
-    <br />
-    <mat-card-content>
-      For college I took three different Myers Briggs personality tests, 3/3
-      conclude I'm an INTJ. My peers would describe me as analytical. I'm a nerd
-      with a sense of humor.
     </mat-card-content>
   </mat-card>
 
@@ -69,6 +60,20 @@
   </mat-card>
 
   <mat-card class="card">
+    <img mat-card-image src="assets/images/avatar.png" alt="profile" />
+    <!-- <mat-card-title>
+      About Me:
+    </mat-card-title> -->
+    <mat-divider></mat-divider>
+    <br />
+    <mat-card-content>
+      For college I took three different Myers Briggs personality tests, 3/3
+      conclude I'm an INTJ. My peers would describe me as analytical. I'm a nerd
+      with a sense of humor.
+    </mat-card-content>
+  </mat-card>
+
+  <mat-card class="card">
     <img mat-card-image src="assets/images/avatar3.png" alt="profile" />
     <mat-card-title> Once Upon a Time... </mat-card-title>
     <mat-divider></mat-divider>
@@ -88,9 +93,13 @@
     <br />
     <mat-card-content>
       <mat-chip-list>
-        <mat-chip color="accent" selected *ngFor="let course of courses">{{
-          course.course
-        }}</mat-chip>
+        <mat-chip
+          color="accent"
+          selected
+          *ngFor="let course of courses"
+          [matTooltip]="course.id"
+          >{{ course.course }}</mat-chip
+        >
       </mat-chip-list>
     </mat-card-content>
   </mat-card>
@@ -144,19 +153,6 @@
       I've had the honor of representing the United States during the 2015 World
       Championships earning two bronze medals for the 500m and 2000m races
       (Under 18 division).
-    </mat-card-content>
-  </mat-card>
-
-  <mat-card class="card">
-    <img mat-card-image src="assets/images/jitterNN.png" alt="" />
-    <mat-card-title> Machine Learning </mat-card-title>
-
-    <mat-card-content>
-      Max Jitter is usually used for video processing. However, by researching
-      the fundamentals of Neural Networks and sprinkling some Javascript I found
-      a creative way to utilize the software to make a visual representation of
-      a Neural Network. This basic patch was capable of computing the output of
-      an XOR gate while ignoring noise input.
     </mat-card-content>
   </mat-card>
 </div>

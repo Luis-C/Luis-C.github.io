@@ -28,11 +28,10 @@ export class HomeComponent implements OnInit {
     { skill: "Visual Studio Code", link: "" },
     { skill: "Anaconda", link: "" },
     { skill: "PuTTY", link: "" },
-    { skill: "Office", link: "" },
+
     { skill: "VM VirtualBox", link: "" },
     { skill: "PowerShell", link: "" },
-
-    { skill: "Clip Studio Paint", link: "" },
+    { skill: "Office", link: "" },
     // { skill: "Blockchain", link: "" }
     // { skill: '', link: '' },
   ];
@@ -42,13 +41,13 @@ export class HomeComponent implements OnInit {
     { course: "Federal Cybersecurity Policy", id: "SPIA 4374" },
     { course: "CyberLeaders Capstone (Machine Learning)", id: "SPIA 4724" },
     { course: "Internet Law", id: "FIN 4014" },
-    { course: "Computer Security", id: "" },
-    { course: "Machine Learning", id: "" },
-    { course: "Mobile Software Development", id: "" },
-    { course: "Cloud Software Development", id: "" },
-    { course: "Systems and Networking Capstone (Blockchain)", id: "" },
-    { course: "Computer Music", id: "" },
-    { course: "Linux Laptop Orchestra", id: "" },
+    { course: "Computer Security", id: "CS 4264" },
+    { course: "Machine Learning", id: "CS 4824" },
+    { course: "Mobile Software Development", id: "CS 3714" },
+    { course: "Cloud Software Development", id: "CS 3754" },
+    { course: "Systems and Networking Capstone (Blockchain)", id: "CS 4284" },
+    { course: "Computer Music", id: "MUS 3066" },
+    { course: "Linux Laptop Orchestra", id: "MUS 3314" },
     // { course: "", id: "" }
   ];
 
