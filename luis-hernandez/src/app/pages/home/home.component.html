@@ -3,9 +3,7 @@
   <mat-card class="card">
     <img mat-card-image src="assets/images/avatar2.png" alt="profile" />
     <mat-card-title-group>
-      <mat-card-title>
-        Luis Hernandez
-      </mat-card-title>
+      <mat-card-title> Luis Hernandez </mat-card-title>
       <mat-card-subtitle>
         Computer Science | Virginia Tech 2020
       </mat-card-subtitle>
@@ -18,16 +16,19 @@
   </mat-card>
 
   <mat-card class="card">
-    <mat-card-title>
-      Skills:
-    </mat-card-title>
+    <mat-card-title> Skills: </mat-card-title>
     <mat-divider></mat-divider>
     <br />
     <mat-card-content>
       <mat-chip-list>
-        <mat-chip color="accent" selected *ngFor="let skill of skills">{{
-          skill.skill
-        }}</mat-chip>
+        <mat-chip color="accent" selected *ngFor="let skill of skills">
+          <fa-icon
+            *ngIf="skill.icon"
+            [icon]="['fab', skill.icon]"
+            size="2x"
+          ></fa-icon>
+          <span *ngIf="!skill.icon">{{ skill.skill }}</span>
+        </mat-chip>
       </mat-chip-list>
     </mat-card-content>
   </mat-card>
@@ -47,9 +48,7 @@
   </mat-card>
 
   <mat-card class="card">
-    <mat-card-title>
-      Top Clifton Strenghts:
-    </mat-card-title>
+    <mat-card-title> Top Clifton Strenghts: </mat-card-title>
     <mat-divider></mat-divider>
     <br />
     <mat-card-content>
@@ -71,9 +70,7 @@
 
   <mat-card class="card">
     <img mat-card-image src="assets/images/avatar3.png" alt="profile" />
-    <mat-card-title>
-      Once Upon a Time...
-    </mat-card-title>
+    <mat-card-title> Once Upon a Time... </mat-card-title>
     <mat-divider></mat-divider>
     <mat-card-content>
       I was born in the land of opportunity, raised with Mexican heritage and
@@ -85,12 +82,8 @@
   </mat-card>
 
   <mat-card class="card">
-    <mat-card-title>
-      Additional Courses:
-    </mat-card-title>
-    <mat-card-subtitle>
-      Beyond the standard curriculum.
-    </mat-card-subtitle>
+    <mat-card-title> Additional Courses: </mat-card-title>
+    <mat-card-subtitle> Beyond the standard curriculum. </mat-card-subtitle>
     <mat-divider></mat-divider>
     <br />
     <mat-card-content>

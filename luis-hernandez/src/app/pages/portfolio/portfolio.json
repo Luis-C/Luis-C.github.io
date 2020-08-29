@@ -1,0 +1,26 @@
+[
+  {
+    "title": "Test Title",
+    "details": "This was a really cool project becase. etc. Cool stuff",
+    "imgSrc": "assets/images/cu.png",
+    "codeSrc": "https://github.com/Luis-C/Luis-C.github.io",
+    "example": "https://luis-c.github.io/SheHacks-VT/home"
+  },
+  {
+    "title": "CaughtUp LLC",
+    "details": "Founding member, This startup is designed to motivate us to dive into new projects in the pursuit of knowledge and the common good.",
+    "imgSrc": "assets/images/cu.png",
+    "codeSrc": "https://github.com/Luis-C/Luis-C.github.io",
+    "example": "https://luis-c.github.io/SheHacks-VT/home"
+  },
+  {
+    "title": "CaughtUp Web App",
+    "paragraphs": [
+      "One of my main projects for CaughtUp has been the development of our Web App.",
+      "Built on Angular with a Firebase backend. I've learned a lot while developing this project.",
+      "Currently the goal is to improve the design to improve UI/UX."
+    ],
+    "imgSrc": "assets/images/cu-logo.png",
+    "view": "https://caughtup.web.app"
+  }
+]

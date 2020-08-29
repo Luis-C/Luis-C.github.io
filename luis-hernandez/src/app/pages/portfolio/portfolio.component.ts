@@ -1,6 +1,8 @@
 import { Component, OnInit } from "@angular/core";
 import { slideInStagger } from "../../route-animations";
 
+import * as data from "./portfolio.json";
+
 @Component({
   selector: "app-portfolio",
   templateUrl: "./portfolio.component.html",
@@ -8,6 +10,8 @@ import { slideInStagger } from "../../route-animations";
   animations: [slideInStagger],
 })
 export class PortfolioComponent implements OnInit {
+  projects: any = (data as any).default;
+
   codeProjects = [
     {
       title: "Test Title",

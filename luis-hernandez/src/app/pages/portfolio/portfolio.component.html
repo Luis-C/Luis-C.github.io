@@ -1,17 +1,18 @@
 <!-- [@arrayAnimation]  -->
 <div class="container">
-  <mat-card class="item" *ngFor="let project of codeProjects">
+  <mat-card class="item" *ngFor="let project of projects">
     <img mat-card-image [src]="project.imgSrc" alt="CaughtUp" />
     <mat-card-title>{{ project.title }}</mat-card-title>
-    <p>{{ project.details }}</p>
-    <a mat-stroked-button [href]="project.codeSrc">GitHub</a>
+    <p *ngFor="let paragraph of project.paragraphs">{{ paragraph }}</p>
+    <a *ngIf="project.codeSrc" mat-stroked-button [href]="project.codeSrc"
+      >GitHub</a
+    >
+    <a mat-stroked-button [href]="project.view">View</a>
   </mat-card>
 
-  <mat-card class="item">
+  <!-- <mat-card class="item">
     <img mat-card-image src="assets/images/cu.png" alt="CaughtUp" />
-    <mat-card-title>
-      CaughtUp LLC
-    </mat-card-title>
+    <mat-card-title> CaughtUp LLC </mat-card-title>
 
     <mat-card-content>
       Founding member, share holder, and Webmaster for
@@ -25,13 +26,11 @@
       I also aid with management and certain design decisions. For example, I
       helped craft our current logo.
     </mat-card-content>
-  </mat-card>
+  </mat-card> -->
 
-  <mat-card class="item">
+  <!-- <mat-card class="item">
     <img mat-card-image src="assets/images/cu-logo.png" alt="CaughtUp" />
-    <mat-card-title>
-      CaughtUp Web App
-    </mat-card-title>
+    <mat-card-title> CaughtUp Web App </mat-card-title>
 
     <mat-card-content>
       One of my main projects for CaughtUp has been the development of our
@@ -45,7 +44,7 @@
       <br />
       Currently the goal is to improve the design to improve UI/UX.
     </mat-card-content>
-  </mat-card>
+  </mat-card> -->
 
   <mat-card class="item">
     <img mat-card-image src="assets/images/eventParser.png" alt="" />
@@ -87,9 +86,7 @@
 
   <mat-card class="item">
     <img mat-card-image src="assets/images/jitterNN.png" alt="" />
-    <mat-card-title>
-      Neural Networks
-    </mat-card-title>
+    <mat-card-title> Neural Networks </mat-card-title>
 
     <mat-card-content>
       Max Jitter is usually used for video processing. However, by researching
@@ -102,9 +99,7 @@
 
   <mat-card class="item">
     <img mat-card-image src="assets/images/musicalNN.png" alt="" />
-    <mat-card-title>
-      Computer Music
-    </mat-card-title>
+    <mat-card-title> Computer Music </mat-card-title>
     <mat-card-content>
       By building on my previous work and leveraging Max's audio capabilities I
       created a more complex Max patch that allows one to both hear and see the
@@ -134,9 +129,7 @@
 
   <mat-card class="item">
     <img mat-card-image src="assets/images/sentanal.png" alt="" />
-    <mat-card-title>
-      Sentiment Analysis
-    </mat-card-title>
+    <mat-card-title> Sentiment Analysis </mat-card-title>
     <mat-card-content>
       <a href="https://github.com/MLayne1/Sentanal" target="_blank">Sentanal</a>
       was a basic Sentiment Analysis project designed to provide insights
@@ -209,9 +202,7 @@
 
   <mat-card class="item">
     <img mat-card-image src="assets/images/cyberleaders.png" alt="" />
-    <mat-card-title>
-      Cybersecurity
-    </mat-card-title>
+    <mat-card-title> Cybersecurity </mat-card-title>
 
     <mat-card-content>
       The
@@ -239,9 +230,7 @@
 
   <mat-card class="item">
     <img mat-card-image src="assets/images/housing.png" alt="" />
-    <mat-card-title>
-      Student Housing Guide
-    </mat-card-title>
+    <mat-card-title> Student Housing Guide </mat-card-title>
 
     <mat-card-content>
       The class project was to design a
@@ -274,16 +263,12 @@
   <mat-card class="item">
     <img mat-card-image src="assets/images/hack2.png" alt="" />
     <mat-card-title> VT Arduino Hackathon </mat-card-title>
-    <mat-card-content>
-      Played around with arduinos!
-    </mat-card-content>
+    <mat-card-content> Played around with arduinos! </mat-card-content>
   </mat-card>
 
   <mat-card class="item">
     <img mat-card-image src="assets/images/culture.png" alt="" />
-    <mat-card-title>
-      Language and Culture
-    </mat-card-title>
+    <mat-card-title> Language and Culture </mat-card-title>
     <mat-card-content>
       Due to my ethnical background I've had experience living abroad in Mexico.
       I'm fully bilingual with 10+ years of experience with Spanish.
@@ -292,9 +277,7 @@
 
   <mat-card class="item">
     <img mat-card-image src="assets/images/dragon.png" alt="" />
-    <mat-card-title>
-      Dragon Boat
-    </mat-card-title>
+    <mat-card-title> Dragon Boat </mat-card-title>
     <mat-card-content>
       There are no star players in Dragon Boat, victory is achieved through
       determination, discipline, and team-work. <br />
@@ -307,9 +290,7 @@
 
   <mat-card class="item">
     <img mat-card-image src="assets/images/drawing.png" alt="" />
-    <mat-card-title>
-      Drawing
-    </mat-card-title>
+    <mat-card-title> Drawing </mat-card-title>
     <mat-card-content>
       I aim for a high standard of creativty and passion in everything I do. I
       have experience with graphical software such as Clip Studio, Corel
