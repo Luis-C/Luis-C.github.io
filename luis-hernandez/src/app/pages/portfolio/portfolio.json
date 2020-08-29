@@ -50,7 +50,7 @@
     "paragraphs": [
       "Wouldn't it be funny if recruiters had to apply for a job candidate? This is a full-stack project designed for my cloud software development class"
     ],
-    "imgSrc": "assets/images/placeholder.png",
+    "imgSrc": "assets/images/candidates.png",
     "github": "https://github.com/Luis-C/Candidates"
   },
   {
@@ -58,7 +58,7 @@
     "paragraphs": [
       "Senior Capstone Project: My task is to build a front end for a blockhain application. Bid, buy and sell parking spots using smart contracts!"
     ],
-    "imgSrc": "assets/images/placeholder.png",
+    "imgSrc": "assets/images/spot-block.png",
     "github": "https://github.com/Luis-C/Spot-Block"
   }
 ]
