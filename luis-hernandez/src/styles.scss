@@ -164,8 +164,8 @@ body {
 }
 
 .content {
-  /* Total height - (header 64 + footer 64) */
-  min-height: calc(100vh - 128px);
+  /* Total height - (header 56 + footer 56) */
+  min-height: calc(100vh - 112px);
 }
 
 a {
