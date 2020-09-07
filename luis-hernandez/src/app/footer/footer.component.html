@@ -1,5 +1,5 @@
 <mat-toolbar class="footer" color="primary">
-  &copy; Luis Hernandez
+  &copy; {{ date | date: "yyyy" }} Luis Hernandez
 
   <a
     mat-icon-button
@@ -7,6 +7,10 @@
     target="_blank"
   >
     <fa-icon [icon]="['fab', 'instagram']" size="lg"></fa-icon>
+  </a>
+
+  <a mat-icon-button href="https://github.com/Luis-C" target="_blank">
+    <fa-icon [icon]="['fab', 'github']" size="lg"></fa-icon>
   </a>
 
   <a
@@ -17,11 +21,7 @@
     <fa-icon [icon]="['fab', 'linkedin']" size="lg"></fa-icon>
   </a>
 
-  <a mat-icon-button href="https://github.com/Luis-C" target="_blank">
-    <fa-icon [icon]="['fab', 'github']" size="lg"></fa-icon>
-  </a>
-
-  <a mat-icon-button href="mailto:ziul.ch@gmail.com">
+  <!-- <a mat-icon-button href="mailto:ziul.ch@gmail.com">
     <mat-icon>email</mat-icon>
-  </a>
+  </a> -->
 </mat-toolbar>
