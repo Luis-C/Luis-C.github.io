@@ -2,7 +2,7 @@
   display: flex;
   justify-content: center;
   overflow: auto;
-  position: absolute;
+  position: fixed;
   bottom: 0;
   background-color: rgba($color: #d50000, $alpha: 0.6);
   backdrop-filter: blur(10px);
