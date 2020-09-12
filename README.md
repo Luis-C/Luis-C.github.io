@@ -15,4 +15,4 @@ ng b --prod --outputPath=../docs/ --baseHref="https://luis-c.github.io/"
 # Notes:
 
 - Github Pages doesn't seem to give the option to deploy from /docs for a
-  personal website.
+  personal website. (?) 
