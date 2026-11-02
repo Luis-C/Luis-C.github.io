@@ -11,6 +11,7 @@ export interface Project {
   readonly view?: string;
   readonly codeSrc?: string;
   readonly example?: string;
+  readonly hidden?: boolean;
 }
 
 @Component({
@@ -20,5 +21,5 @@ export interface Project {
   styleUrl: './portfolio.component.scss',
 })
 export class PortfolioComponent {
-  readonly projects: readonly Project[] = projects;
+  readonly projects: readonly Project[] = projects.filter((project: Project) => !project.hidden);
 }

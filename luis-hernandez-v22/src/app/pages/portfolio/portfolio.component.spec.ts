@@ -8,9 +8,12 @@ describe('PortfolioComponent', () => {
     const element: HTMLElement = fixture.nativeElement;
     const projects = fixture.componentInstance.projects;
     const cards = element.querySelectorAll('[data-project]');
-    expect(projects.length).toBe(12);
-    expect(new Set(projects.map((p) => p.title)).size).toBe(12);
-    expect(element.querySelectorAll('mat-card').length).toBe(19);
+    expect(projects.length).toBe(9);
+    expect(new Set(projects.map((p) => p.title)).size).toBe(9);
+    expect(element.querySelectorAll('mat-card').length).toBe(16);
+    expect(projects.some((project) => project.title === 'Code Art')).toBe(false);
+    expect(projects.filter((project) => project.title.startsWith('CaughtUp')).length).toBe(1);
+    expect(projects[0].paragraphs.join(' ')).toContain('no longer involved');
     expect(element.querySelectorAll('audio').length).toBe(3);
     projects.forEach((project, index) => {
       const card = cards[index];

@@ -9,10 +9,14 @@ export default defineConfig({
   reporter: [['list'], ['html', { open: 'never' }]],
   use: {
     baseURL: 'http://localhost:4300',
-    browserName: 'chromium',
     screenshot: 'only-on-failure',
     trace: 'retain-on-failure',
   },
+  projects: [
+    { name: 'chromium', use: { browserName: 'chromium' } },
+    { name: 'firefox', testMatch: '**/appearance.spec.ts', use: { browserName: 'firefox' } },
+    { name: 'webkit', testMatch: '**/appearance.spec.ts', use: { browserName: 'webkit' } },
+  ],
   webServer: {
     command: 'npm run preview',
     url: 'http://localhost:4300/',

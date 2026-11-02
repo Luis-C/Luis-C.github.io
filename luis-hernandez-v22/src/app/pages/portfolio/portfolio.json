@@ -1,32 +1,11 @@
 [
   {
-    "title": "CaughtUp LLC",
+    "title": "CaughtUp",
     "paragraphs": [
-      "Founding member and Software Engineer",
-      "This startup is designed to motivate us to dive into new projects in the pursuit of knowledge and the common good."
+      "As a former founding member and software engineer at CaughtUp, I helped build an Angular web app backed by Firebase.",
+      "I also contributed to a VT Hacks event-parser prototype that turned photos into calendar events. These projects reflect my past work; I am no longer involved with CaughtUp."
     ],
-    "imgSrc": "assets/images/cu-logo.png",
-    "codeSrc": "https://github.com/Luis-C/Luis-C.github.io",
-    "example": "https://luis-c.github.io/SheHacks-VT/home"
-  },
-  {
-    "title": "CaughtUp Web App",
-    "paragraphs": [
-      "One of my main projects for CaughtUp has been the development of our Web App.",
-      "Built on Angular with a Firebase backend. I've learned a lot while developing this project.",
-      "Currently the goal is to improve the design to improve UI/UX."
-    ],
-    "imgSrc": "assets/images/cu-web-app.png",
-    "view": "https://caughtup.web.app"
-  },
-  {
-    "title": "CaughtUp Event Parser",
-    "paragraphs": [
-      "This project was part of the VT Hacks Hackathon",
-      "We wanted to make scheduling easier. The android, iOS, and web application allows users to upload or take a photo with their camera and we create a calendar event for them."
-    ],
-    "imgSrc": "assets/images/eventParser.png",
-    "view": "https://caughtup-parser.firebaseapp.com/home"
+    "imgSrc": "assets/images/cu-logo.png"
   },
   {
     "title": "This Website",
@@ -98,6 +77,7 @@
   },
   {
     "title": "Code Art",
+    "hidden": true,
     "paragraphs": [
       "Personal project were I experiment with React",
       "More info to come once the project is finished"

@@ -18,9 +18,8 @@ describe('App routing and shell', () => {
     const element: HTMLElement = fixture.nativeElement;
     expect(element.querySelector('mat-tab-nav-panel')).toBeTruthy();
     expect(element.querySelectorAll('app-footer a').length).toBe(4);
-    expect(element.querySelector('.resume')?.getAttribute('href')).toBe(
-      'https://drive.google.com/open?id=1lYAr1FHSi0Fh0gX4MhRFFBFPemlKZ56m',
-    );
+    expect(element.querySelector('.resume')).toBeNull();
+    expect(element.querySelector('app-header')?.textContent).not.toContain('RESUME');
     expect(element.querySelector('a[aria-current="page"]')?.textContent).toContain('About Me');
   });
 
@@ -39,9 +38,19 @@ describe('App routing and shell', () => {
     const fixture = TestBed.createComponent(App);
     await TestBed.inject(Router).navigateByUrl('/portfolio');
     await fixture.whenStable();
-    expect(fixture.nativeElement.querySelectorAll('app-portfolio mat-card').length).toBe(19);
+    expect(fixture.nativeElement.querySelectorAll('app-portfolio mat-card').length).toBe(16);
     expect(fixture.nativeElement.querySelector('a[aria-current="page"]')?.textContent).toContain(
       'Portfolio',
+    );
+  });
+
+  it('navigates to watchfaces and highlights its tab', async () => {
+    const fixture = TestBed.createComponent(App);
+    await TestBed.inject(Router).navigateByUrl('/watchfaces');
+    await fixture.whenStable();
+    expect(fixture.nativeElement.querySelectorAll('[data-watchface]').length).toBe(7);
+    expect(fixture.nativeElement.querySelector('a[aria-current="page"]')?.textContent).toContain(
+      'Watchfaces',
     );
   });
 });

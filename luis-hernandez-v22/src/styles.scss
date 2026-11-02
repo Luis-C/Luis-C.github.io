@@ -10,13 +10,24 @@
 html {
   color-scheme: dark;
   scroll-padding-top: 128px;
+  --surface: #181c24;
+  --surface-border: rgba(255, 255, 255, 0.14);
+  --surface-shadow: 0 8px 24px rgba(0, 0, 0, 0.18);
+  --surface-blur: none;
+  --text: #f3f4f7;
+  --muted-text: #c9cdd5;
+  --accent: #ffecb3;
 }
 
 body {
   margin: 0;
   min-width: 320px;
-  background: #212121 url('/assets/images/bg.jpg') center / cover fixed no-repeat;
-  color: #fff;
+  background-color: #11151d;
+  background-image:
+    radial-gradient(ellipse at 10% 5%, rgba(108, 48, 65, 0.42), transparent 55%),
+    radial-gradient(ellipse at 90% 40%, rgba(54, 80, 110, 0.34), transparent 60%),
+    linear-gradient(145deg, #171b25, #11151d);
+  color: var(--text);
   font:
     16px / 1.5 Roboto,
     'Helvetica Neue',
@@ -24,12 +35,13 @@ body {
 }
 
 a {
-  color: #fff;
+  color: var(--text);
   font-weight: bold;
 }
 
-a:focus-visible {
-  outline: 2px solid #ffecb3;
+a:focus-visible,
+[tabindex]:focus-visible {
+  outline: 2px solid var(--accent);
   outline-offset: 3px;
 }
 
@@ -37,21 +49,70 @@ html .card,
 html .item {
   @include mat.card-overrides(
     (
-      elevated-container-color: rgba(0, 0, 0, 0.72),
+      elevated-container-color: var(--surface),
+      subtitle-text-color: var(--muted-text),
     )
   );
   overflow-wrap: anywhere;
 }
 
-@supports (backdrop-filter: blur(10px)) {
-  html .card,
-  html .item {
-    @include mat.card-overrides(
-      (
-        elevated-container-color: rgba(0, 0, 0, 0.452),
-      )
-    );
-    backdrop-filter: blur(10px);
+html .card,
+html .item,
+html .glass-surface {
+  border: 1px solid var(--surface-border);
+  box-shadow: var(--surface-shadow);
+  -webkit-backdrop-filter: var(--surface-blur);
+  backdrop-filter: var(--surface-blur);
+}
+
+html .glass-surface {
+  background-color: var(--surface);
+}
+
+html .card:focus-within,
+html .item:focus-within {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+}
+
+@supports ((backdrop-filter: blur(12px)) or (-webkit-backdrop-filter: blur(12px))) {
+  html {
+    --surface: rgba(24, 28, 36, 0.82);
+    --surface-blur: blur(12px);
+  }
+}
+
+@media (hover: hover) and (pointer: fine) {
+  html .item:hover {
+    border-color: var(--accent);
+  }
+}
+
+@media (prefers-reduced-transparency: reduce), (prefers-contrast: more) {
+  html {
+    --surface: #181c24;
+    --surface-blur: none;
+    --surface-border: #8d96a6;
+  }
+}
+
+@media (forced-colors: active) {
+  html {
+    --surface: Canvas;
+    --surface-blur: none;
+    --surface-border: CanvasText;
+    --surface-shadow: none;
+    --text: CanvasText;
+    --muted-text: CanvasText;
+    --accent: Highlight;
+  }
+
+  body {
+    background: Canvas;
+  }
+
+  a {
+    color: LinkText;
   }
 }
 

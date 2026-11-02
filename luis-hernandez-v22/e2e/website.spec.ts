@@ -2,6 +2,9 @@ import { expect, test, type Locator, type Page, type Request } from '@playwright
 import { readFileSync, readdirSync } from 'node:fs';
 import { join, relative, resolve } from 'node:path';
 import originalProjects from '../../luis-hernandez/src/app/pages/portfolio/portfolio.json';
+import currentProjects from '../src/app/pages/portfolio/portfolio.json';
+import type { Project } from '../src/app/pages/portfolio/portfolio.component';
+import { watchfaces } from '../src/app/pages/watchfaces/watchfaces';
 import {
   browserOutput,
   normalize,
@@ -21,6 +24,7 @@ test.beforeEach(async ({ page }) => {
       [
         'http://localhost:4300/home',
         'http://localhost:4300/portfolio',
+        'http://localhost:4300/watchfaces',
         'http://localhost:4300/not-a-route',
       ].includes(location) &&
       message.text() ===
@@ -92,15 +96,7 @@ async function imagesLoaded(page: Page) {
     )
     .toBe(true);
   await page.evaluate(() => document.fonts.ready);
-  expect(
-    await page
-      .locator('mat-icon')
-      .evaluateAll((icons) =>
-        icons.every((icon) =>
-          document.fonts.check('24px "Material Icons"', icon.textContent ?? ''),
-        ),
-      ),
-  ).toBe(true);
+  await expect(page.locator('app-footer svg')).toHaveCount(4);
 }
 
 async function assertStaticCard(card: Locator, original: Element) {
@@ -117,15 +113,25 @@ async function assertStaticCard(card: Locator, original: Element) {
   ).toEqual(Array.from(original.querySelectorAll('a'), (a) => a.getAttribute('href')));
 }
 
-test('portfolio preserves all 19 cards, ordered paragraphs, images and action URLs', async ({
+test('portfolio shows curated projects with paired content and hides retired entries', async ({
   page,
 }) => {
   await page.goto('/');
   await page.getByRole('tab', { name: 'Portfolio', exact: true }).click();
-  await expect(page.locator('app-portfolio mat-card')).toHaveCount(19);
+  await expect(page.locator('app-portfolio mat-card')).toHaveCount(16);
   const cards = page.locator('[data-project]');
-  await expect(cards).toHaveCount(12);
-  for (const [index, project] of originalProjects.entries()) {
+  const visibleProjects: readonly Project[] = currentProjects.filter(
+    (project: Project) => !project.hidden,
+  );
+  await expect(cards).toHaveCount(9);
+  await expect(cards.filter({ hasText: 'Code Art' })).toHaveCount(0);
+  await expect(cards.first().locator('mat-card-title')).toHaveText('CaughtUp');
+  await expect(cards.first()).toContainText('no longer involved with CaughtUp');
+  await expect(cards.first().locator('a')).toHaveCount(0);
+  for (const project of visibleProjects.filter((project) => project.title !== 'CaughtUp')) {
+    expect(project).toEqual(originalProjects.find((original) => original.title === project.title));
+  }
+  for (const [index, project] of visibleProjects.entries()) {
     const card = cards.nth(index);
     await expect(card.locator('mat-card-title')).toHaveText(project.title);
     await expect(card.locator('img')).toHaveAttribute('src', project.imgSrc);
@@ -137,7 +143,7 @@ test('portfolio preserves all 19 cards, ordered paragraphs, images and action UR
   const staticCards = originalCards('portfolio').filter((card) => !card.hasAttribute('*ngfor'));
   expect(staticCards).toHaveLength(7);
   for (const [index, original] of staticCards.entries()) {
-    await assertStaticCard(page.locator('app-portfolio mat-card').nth(index + 12), original);
+    await assertStaticCard(page.locator('app-portfolio mat-card').nth(index + 9), original);
   }
   await imagesLoaded(page);
 });
@@ -208,7 +214,7 @@ test('routing, keyboard tabs, refresh, history and Pages 404 shell work', async 
   await page.goForward();
   await expect(page).toHaveURL('/portfolio');
   expect((await page.reload())?.status()).toBe(404);
-  await expect(page.locator('app-portfolio mat-card')).toHaveCount(19);
+  await expect(page.locator('app-portfolio mat-card')).toHaveCount(16);
   await imagesLoaded(page);
   expect((await request.get('/home')).status()).toBe(404);
   const missing = await page.goto('/not-a-route');
@@ -294,18 +300,14 @@ test('bundled media, background, favicon and all source assets are intact', asyn
   }
 });
 
-test('resume and footer destinations match the original source', async ({ page }) => {
+test('resume is hidden and footer destinations match the original source', async ({ page }) => {
   await page.goto('/');
-  for (const [selector, file] of [
-    ['app-header', 'header/header.component.html'],
-    ['app-footer', 'footer/footer.component.html'],
-  ]) {
+  await expect(page.getByRole('link', { name: 'RESUME', exact: true })).toHaveCount(0);
+  for (const [selector, file] of [['app-footer', 'footer/footer.component.html']]) {
     const original = Array.from(originalDocument(file).querySelectorAll('a[href]'), (link) =>
       link.getAttribute('href'),
     );
-    const links = page.locator(
-      selector === 'app-header' ? 'app-header a.resume' : 'app-footer a[href]',
-    );
+    const links = page.locator(`${selector} a[href]`);
     expect(
       await links.evaluateAll((elements) => elements.map((link) => link.getAttribute('href'))),
     ).toEqual(original);
@@ -317,12 +319,68 @@ test('resume and footer destinations match the original source', async ({ page }
   }
 });
 
+test('watchfaces has seven released products, short summaries and direct store links', async ({
+  page,
+  request,
+}) => {
+  await page.goto('/');
+  const tab = page.getByRole('tab', { name: 'Watchfaces', exact: true });
+  await tab.click();
+  await expect(page).toHaveURL('/watchfaces');
+  await expect(tab).toHaveAttribute('aria-selected', 'true');
+  await expect(page.getByRole('heading', { name: 'Watchfaces', exact: true })).toBeVisible();
+  const cards = page.locator('[data-watchface]');
+  await expect(cards).toHaveCount(7);
+  await expect(cards.locator('h2')).toHaveText([
+    'Ouroboros',
+    'Errant',
+    'TZOLTECH',
+    'Fenestra',
+    'Dimidi',
+    'TZOLTECH LITE',
+    'StatsRadar',
+  ]);
+  await expect(page.locator('app-watchfaces')).not.toContainText(/beta/i);
+  for (const [index, watchface] of watchfaces.entries()) {
+    const card = cards.nth(index);
+    await expect(card.locator('p')).toHaveText(watchface.description);
+    expect(watchface.description.length).toBeLessThanOrEqual(120);
+    await expect(card.locator('img')).toHaveAttribute('src', watchface.image);
+    const imageResponse = await request.get(`/${watchface.image}`);
+    expect(imageResponse.ok()).toBe(true);
+    expect(imageResponse.headers()['content-type']).toContain(
+      watchface.image.endsWith('.jpg') ? 'image/jpeg' : 'image/png',
+    );
+    expect(await imageResponse.body()).toEqual(readFileSync(resolve('public', watchface.image)));
+    const link = card.getByRole('link', {
+      name: `View ${watchface.name} on Connect IQ`,
+      exact: true,
+    });
+    await expect(link).toHaveAttribute('href', watchface.storeUrl);
+    await expect(link).toHaveAttribute('target', '_blank');
+    await expect(link).toHaveAttribute('rel', 'noopener noreferrer');
+  }
+  await imagesLoaded(page);
+  await tab.focus();
+  await page.keyboard.press('ArrowLeft');
+  await expect(page.getByRole('tab', { name: 'Portfolio', exact: true })).toBeFocused();
+  expect((await page.reload())?.status()).toBe(404);
+  await expect(cards).toHaveCount(7);
+  await expect(tab).toHaveAttribute('aria-selected', 'true');
+  await imagesLoaded(page);
+  await page.getByRole('tab', { name: 'About Me', exact: true }).click();
+  await expect(page).toHaveURL('/home');
+  await page.goBack();
+  await expect(page).toHaveURL('/watchfaces');
+  await expect(cards).toHaveCount(7);
+});
+
 for (const viewport of [
   { width: 320, height: 800 },
   { width: 768, height: 1024 },
   { width: 1440, height: 900 },
 ]) {
-  for (const route of ['home', 'portfolio']) {
+  for (const route of ['home', 'portfolio', 'watchfaces']) {
     test(`${route} is usable at ${viewport.width}x${viewport.height}`, async ({
       page,
     }, testInfo) => {
@@ -330,6 +388,11 @@ for (const viewport of [
       await page.goto('/');
       if (route === 'portfolio')
         await page.getByRole('tab', { name: 'Portfolio', exact: true }).click();
+      if (route === 'watchfaces')
+        await page.getByRole('tab', { name: 'Watchfaces', exact: true }).click();
+      for (const name of ['About Me', 'Portfolio', 'Watchfaces']) {
+        await expect(page.getByRole('tab', { name, exact: true })).toBeInViewport();
+      }
       await imagesLoaded(page);
       expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(
         true,
@@ -351,7 +414,7 @@ for (const viewport of [
         );
       expect(clipped).toEqual([]);
       const cards = page.locator('main mat-card');
-      await expect(cards).toHaveCount(route === 'home' ? 10 : 19);
+      await expect(cards).toHaveCount(route === 'home' ? 10 : route === 'portfolio' ? 16 : 7);
       await cards.last().scrollIntoViewIfNeeded();
       await expect(cards.last()).toBeInViewport();
       await page.evaluate(() => scrollTo(0, 0));
@@ -365,9 +428,9 @@ for (const viewport of [
         background: getComputedStyle(element).backgroundColor,
         blur: getComputedStyle(element).backdropFilter,
       }));
-      const alpha = /^rgba\(0, 0, 0, ([\d.]+)\)$/.exec(style.background)?.[1];
-      expect(Number(alpha)).toBeCloseTo(0.452, 2);
-      expect(style.blur).toBe('blur(10px)');
+      const alpha = /^rgba\(24, 28, 36, ([\d.]+)\)$/.exec(style.background)?.[1];
+      expect(Number(alpha)).toBeCloseTo(0.82, 2);
+      expect(style.blur).toBe('blur(12px)');
       if (route === 'home') {
         expect(
           await page

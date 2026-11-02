@@ -1,0 +1,58 @@
+:host {
+  display: block;
+}
+
+.watchfaces {
+  max-width: 1200px;
+  margin: auto;
+  padding: 24px 12px;
+}
+
+.intro {
+  margin-bottom: 24px;
+  padding: 16px;
+  border-radius: 4px;
+}
+
+h1 {
+  margin: 0 0 8px;
+  font-size: 2rem;
+}
+
+.intro p,
+h2 {
+  margin: 0;
+}
+
+h2 {
+  font: inherit;
+}
+
+.catalog {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 260px), 1fr));
+  gap: 24px;
+}
+
+.item {
+  min-width: 0;
+  max-width: 380px;
+  width: 100%;
+  justify-self: center;
+}
+
+img {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 1;
+  object-fit: contain;
+  background: #080e12;
+}
+
+mat-card-content {
+  flex: 1;
+}
+
+mat-card-actions {
+  padding: 8px 16px 16px;
+}

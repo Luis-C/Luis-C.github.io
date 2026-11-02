@@ -11,16 +11,19 @@
   height: auto;
   min-height: 64px;
   padding: 0 8px;
-  background-color: rgba(#d50000, 0.6);
-  backdrop-filter: blur(10px);
+  border-top: 0;
+  border-left: 0;
+  border-right: 0;
 }
 
 nav {
   min-width: 0;
 }
 
-.resume {
-  flex-shrink: 0;
+.nav-link {
+  min-width: 0;
+  min-height: 48px;
+  padding: 0 12px;
 }
 
 .skip-link {
@@ -28,7 +31,7 @@ nav {
   left: 8px;
   top: -100px;
   padding: 8px;
-  background: #212121;
+  background: var(--surface);
 
   &:focus {
     top: 0;
@@ -36,11 +39,17 @@ nav {
   }
 }
 
+@media (forced-colors: active) {
+  .nav-link[aria-current='page'] {
+    outline: 2px solid Highlight;
+    outline-offset: -4px;
+  }
+}
+
 @media (max-width: 480px) {
   .header {
     flex-wrap: wrap;
     justify-content: center;
-    padding-bottom: 8px;
   }
 
   nav {

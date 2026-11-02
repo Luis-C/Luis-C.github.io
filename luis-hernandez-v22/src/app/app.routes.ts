@@ -11,5 +11,10 @@ export const routes: Routes = [
     loadComponent: () =>
       import('./pages/portfolio/portfolio.component').then((m) => m.PortfolioComponent),
   },
+  {
+    path: 'watchfaces',
+    loadComponent: () =>
+      import('./pages/watchfaces/watchfaces.component').then((m) => m.WatchfacesComponent),
+  },
   { path: '**', redirectTo: 'home' },
 ];

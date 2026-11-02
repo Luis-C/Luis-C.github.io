@@ -1,0 +1,37 @@
+<section class="watchfaces" aria-labelledby="watchfaces-heading">
+  <div class="intro glass-surface">
+    <h1 id="watchfaces-heading">Watchfaces</h1>
+    <p>My Garmin Connect IQ watchfaces. Find full details and compatible devices on the store.</p>
+  </div>
+  <div class="catalog">
+    @for (watchface of watchfaces; track watchface.storeUrl) {
+      <mat-card class="item" data-watchface>
+        <img
+          mat-card-image
+          [src]="watchface.image"
+          [alt]="watchface.name + ' watchface preview'"
+          width="500"
+          height="500"
+        />
+        <mat-card-header>
+          <mat-card-title
+            ><h2>{{ watchface.name }}</h2></mat-card-title
+          >
+        </mat-card-header>
+        <mat-card-content>
+          <p>{{ watchface.description }}</p>
+        </mat-card-content>
+        <mat-card-actions>
+          <a
+            mat-stroked-button
+            [href]="watchface.storeUrl"
+            [attr.aria-label]="'View ' + watchface.name + ' on Connect IQ'"
+            target="_blank"
+            rel="noopener noreferrer"
+            >View on Connect IQ</a
+          >
+        </mat-card-actions>
+      </mat-card>
+    }
+  </div>
+</section>
