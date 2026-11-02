@@ -1,0 +1,64 @@
+@use '@angular/material' as mat;
+
+:host {
+  display: block;
+}
+
+.container {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 16px;
+  max-width: 1440px;
+  margin: auto;
+  padding: 24px 12px;
+}
+
+.card {
+  flex: 1 1 clamp(332px, calc(25vw + 32px), 400px);
+  min-width: 0;
+  max-width: 400px;
+}
+
+mat-card-title,
+mat-card-title-group,
+mat-card-subtitle {
+  padding: 0 16px;
+}
+
+mat-card-title-group mat-card-title,
+mat-card-title-group mat-card-subtitle {
+  padding: 0;
+}
+
+mat-card-content {
+  padding-top: 16px;
+}
+
+img {
+  width: 100%;
+  height: auto;
+}
+
+mat-expansion-panel {
+  overflow-wrap: anywhere;
+}
+
+mat-chip {
+  @include mat.chips-overrides(
+    (
+      elevated-container-color: #ffecb3,
+      label-text-color: #212121,
+    )
+  );
+  max-width: 100%;
+  height: auto;
+  min-height: 40px;
+}
+
+.chip-text {
+  display: block;
+  padding: 6px 0;
+  white-space: normal;
+}

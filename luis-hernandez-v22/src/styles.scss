@@ -1,0 +1,65 @@
+@use './styles/theme';
+@use '@angular/material' as mat;
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  color-scheme: dark;
+  scroll-padding-top: 128px;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  background: #212121 url('/assets/images/bg.jpg') center / cover fixed no-repeat;
+  color: #fff;
+  font:
+    16px / 1.5 Roboto,
+    'Helvetica Neue',
+    sans-serif;
+}
+
+a {
+  color: #fff;
+  font-weight: bold;
+}
+
+a:focus-visible {
+  outline: 2px solid #ffecb3;
+  outline-offset: 3px;
+}
+
+html .card,
+html .item {
+  @include mat.card-overrides(
+    (
+      elevated-container-color: rgba(0, 0, 0, 0.72),
+    )
+  );
+  overflow-wrap: anywhere;
+}
+
+@supports (backdrop-filter: blur(10px)) {
+  html .card,
+  html .item {
+    @include mat.card-overrides(
+      (
+        elevated-container-color: rgba(0, 0, 0, 0.452),
+      )
+    );
+    backdrop-filter: blur(10px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}

@@ -1,0 +1,123 @@
+<div class="container">
+  @for (project of projects; track project.title) {
+    <mat-card class="item" data-project>
+      <img mat-card-image [src]="project.imgSrc" [alt]="project.title" />
+      <mat-card-title>{{ project.title }}</mat-card-title>
+      <mat-card-content>
+        @for (paragraph of project.paragraphs; track $index) {
+          <p>{{ paragraph }}</p>
+        }
+      </mat-card-content>
+      <mat-card-actions>
+        @if (project.github) {
+          <a mat-stroked-button [href]="project.github" target="_blank" rel="noopener noreferrer">
+            GitHub
+          </a>
+        }
+        @if (project.view) {
+          <a mat-stroked-button [href]="project.view" target="_blank" rel="noopener noreferrer">
+            View
+          </a>
+        }
+      </mat-card-actions>
+    </mat-card>
+  }
+
+  <mat-card class="item">
+    <img mat-card-image src="assets/images/hack2.png" alt="VT Arduino Hackathon" />
+    <mat-card-title> VT Arduino Hackathon </mat-card-title>
+    <mat-card-content> Played around with arduinos! </mat-card-content>
+  </mat-card>
+  <mat-card class="item">
+    <img mat-card-image src="assets/images/gencyber.png" alt="GenCyber Teaching Assistant" />
+    <mat-card-title> GenCyber Teaching Assistant </mat-card-title>
+    <mat-card-content>
+      "GenCyber is a week-long camp to teach high school teachers about computer security and how to
+      teach it to their students." <br /><br />
+      As a TA my job was to ensure that the teachers had a great experience and ensure that they
+      left the camp feeling "delighted." I helped with table set-up and helped guide them through
+      some of their technical questions related to the course.
+    </mat-card-content>
+  </mat-card>
+
+  <mat-card class="item">
+    <img mat-card-image src="assets/images/unreal.png" alt="Game Development" />
+    <mat-card-title> Game Development </mat-card-title>
+    <mat-card-content>
+      Currently working on a team project using Unreal Engine. More Details to come once the project
+      is finished...
+      <br />
+      <br />
+      My current task is to help the team deploy the game online.
+    </mat-card-content>
+  </mat-card>
+
+  <mat-card class="item">
+    <img mat-card-image src="assets/images/musicalNN.png" alt="Computer Music" />
+    <mat-card-title> Computer Music </mat-card-title>
+    <mat-card-content>
+      By building on my previous work and leveraging Max's audio capabilities I created a more
+      complex Max patch that allows one to both hear and see the network learning. Musical flare
+      added to make it more interesting.
+      <br />
+    </mat-card-content>
+  </mat-card>
+
+  <mat-card class="item">
+    <mat-card-title> Computer Music Samples</mat-card-title>
+    <mat-card-content>
+      <br />
+      <h3>Headphones recommended (can't guarantee you'll like it):</h3>
+      <audio controls preload="metadata" class="audio" aria-label="Neural network music sample">
+        <source src="assets/sounds/nnSample.mp3" type="audio/mpeg" />
+        Your browser does not support the audio element.
+      </audio>
+      <h3>Another Max sample:</h3>
+      <audio controls preload="metadata" class="audio" aria-label="Combined Max music sample">
+        <source src="assets/sounds/combinedSample.mp3" type="audio/mpeg" />
+        Your browser does not support the audio element.
+      </audio>
+      <h3>Midterm project sample:</h3>
+      <audio controls preload="metadata" class="audio" aria-label="Midterm music sample">
+        <source src="assets/sounds/midtermSample.mp3" type="audio/mpeg" />
+        Your browser does not support the audio element.
+      </audio>
+      <br />
+      The 16-channel piece was presented at Virginia Tech's
+      <a href="https://icat.vt.edu/the-cube/" target="_blank" rel="noopener noreferrer"
+        >"The Cube."
+      </a>
+    </mat-card-content>
+  </mat-card>
+
+  <mat-card class="item">
+    <img mat-card-image src="assets/images/linux.png" alt="Linux Laptop Orchestra" />
+    <mat-card-title> Linux Laptop Orchestra (L2Ork) </mat-card-title>
+    <mat-card-content>
+      <a
+        href="http://l2ork.music.vt.edu/main/what-is-l2ork-2/"
+        target="_blank"
+        rel="noopener noreferrer"
+        >L2Ork</a
+      >
+      explores the integration of arts and technology. <br />
+      <br />As a class we presented different musical pieces at "The Cube" and got the experience of
+      collaborating with world-renown composer
+      <a href="https://www.manudelago.com/" target="_blank" rel="noopener noreferrer">
+        Manu Delago</a
+      >
+      and internationally accomplished multi-instrumentalist
+      <a href="http://www.isakurz.com/isa.html" target="_blank" rel="noopener noreferrer">
+        Isa Kurz.</a
+      >
+    </mat-card-content>
+  </mat-card>
+
+  <mat-card class="item">
+    <img mat-card-image src="assets/images/hack1.png" alt="STEM Club" />
+    <mat-card-title> STEM Club (HS)</mat-card-title>
+    <mat-card-content>
+      Since High School I've been interested in constantly learning. Early coding experience.
+    </mat-card-content>
+  </mat-card>
+</div>

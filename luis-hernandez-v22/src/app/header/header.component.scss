@@ -1,0 +1,49 @@
+:host {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  gap: 8px;
+  height: auto;
+  min-height: 64px;
+  padding: 0 8px;
+  background-color: rgba(#d50000, 0.6);
+  backdrop-filter: blur(10px);
+}
+
+nav {
+  min-width: 0;
+}
+
+.resume {
+  flex-shrink: 0;
+}
+
+.skip-link {
+  position: absolute;
+  left: 8px;
+  top: -100px;
+  padding: 8px;
+  background: #212121;
+
+  &:focus {
+    top: 0;
+    z-index: 101;
+  }
+}
+
+@media (max-width: 480px) {
+  .header {
+    flex-wrap: wrap;
+    justify-content: center;
+    padding-bottom: 8px;
+  }
+
+  nav {
+    width: 100%;
+  }
+}

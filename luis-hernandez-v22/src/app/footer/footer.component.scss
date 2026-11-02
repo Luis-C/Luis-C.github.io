@@ -1,0 +1,14 @@
+.footer {
+  justify-content: center;
+  flex-wrap: wrap;
+  height: auto;
+  min-height: 64px;
+  gap: 4px 16px;
+  padding: 8px;
+  background-color: rgba(#d50000, 0.6);
+  backdrop-filter: blur(10px);
+}
+
+.social-links {
+  display: flex;
+}

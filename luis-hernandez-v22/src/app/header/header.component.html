@@ -1,0 +1,28 @@
+<header>
+  <a class="skip-link" href="#main-content">Skip to content</a>
+  <mat-toolbar class="header" color="primary">
+    <nav mat-tab-nav-bar color="accent" [tabPanel]="tabPanel()" aria-label="Main navigation">
+      @for (link of navLinks; track link.path) {
+        <a
+          mat-tab-link
+          [routerLink]="link.path"
+          routerLinkActive
+          #rla="routerLinkActive"
+          [active]="rla.isActive"
+          [attr.aria-current]="rla.isActive ? 'page' : null"
+        >
+          {{ link.label }}
+        </a>
+      }
+    </nav>
+    <a
+      class="resume"
+      mat-raised-button
+      color="accent"
+      href="https://drive.google.com/open?id=1lYAr1FHSi0Fh0gX4MhRFFBFPemlKZ56m"
+      target="_blank"
+      rel="noopener noreferrer"
+      >RESUME</a
+    >
+  </mat-toolbar>
+</header>

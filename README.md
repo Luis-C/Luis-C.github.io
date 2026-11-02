@@ -1,58 +1,67 @@
 # [Personal Website](https://luis-c.github.io)
 
-This is the repository for my personal website, a single-page Angular application.
+This repository contains the original website and a separately verified Angular
+22 copy. The upgrade has **not** been published; the existing deployment and
+Angular 9 source remain unchanged.
 
-## Tech Stack
+## Projects
 
-| Technology | Version |
-|------------|---------|
-| Angular | 9.1.7 |
-| Angular CLI | 9.1.6 |
-| Angular Material | 9.2.3 |
-| TypeScript | 3.7.5 |
-| RxJS | 6.5.5 |
+| Location | Purpose |
+|----------|---------|
+| [luis-hernandez-v22/](./luis-hernandez-v22/) | Standalone, zoneless Angular 22 application; all new development |
+| [luis-hernandez/](./luis-hernandez/) | Original Angular 9 reference; its old toolchain is not needed for the copy |
+| Root HTML, bundles, and [assets/](./assets/) | Existing deployed Angular 9 website; do not overwrite when building |
+| [UPGRADE-PLAN.md](./UPGRADE-PLAN.md) | Migration plan, acceptance criteria, and implementation results |
 
-## Project Structure
+## Run the Upgraded Copy
 
-```
-├── 404.html                 # SPA routing fallback for GitHub Pages
-├── index.html               # SPA routing fallback (copy of 404.html)
-├── luis-hernandez/          # Angular source project
-│   ├── angular.json         # Angular CLI configuration
-│   ├── package.json         # Dependencies and scripts
-│   ├── src/                 # Application source code
-│   │   ├── app/             # Components (header, footer, pages)
-│   │   ├── assets/          # Static files (images, sounds, documents)
-│   │   └── environments/    # Environment configs
-│   └── e2e/                 # Protractor end-to-end tests
-├── assets/                  # Deployed assets (mirror of src/assets)
-└── [hashed JS/CSS files]    # Production build output
-```
-
-## Building
-
-From the `luis-hernandez/` directory:
+Use Node **26.13.0**, pinned in the new workspace's `.node-version`.
+If using fnm, run `fnm use` from that workspace.
 
 ```bash
-ng build --prod --outputPath=../ --baseHref="https://luis-c.github.io/"
+cd luis-hernandez-v22
+npm ci
+npm start
 ```
 
-This outputs hashed JS/CSS bundles and a single `index.html` to the repository root.
+Open **http://localhost:4200/**. Both `/home` and `/portfolio` work, including
+direct loads and browser refresh.
 
-## Deploying to GitHub Pages
+## Build and Verify
 
-GitHub Pages serves from the `gh-pages` (or `main`) branch root for personal
-sites, so the build output is placed directly at the repository root:
+```bash
+cd luis-hernandez-v22
+npm exec playwright install chromium
+npm run verify
+```
 
-1. Run the production build as shown above (`--outputPath=../` writes to the repo root).
-2. Commit `index.html` and `404.html` (a copy of `index.html` for SPA re-route support).
-3. Push to the `gh-pages` (or `main`) branch.
+Verification runs seven unit tests, strict browser-test type checking, a
+production build, and eleven Chromium acceptance tests. It checks content/card
+pairings, assets, audio playback, links, routing, Pages-style fallback, and both
+pages at 320px, 768px, and 1440px widths. Tests read the original source for parity.
 
-The `404.html` file is the classic Angular-on-GitHub-Pages trick: GitHub Pages
-falls back to `404.html` for missing routes, so serving the Angular shell from
-it keeps client-side routing working on page refresh.
+The production artifact is **`luis-hernandez-v22/dist/luis-hernandez-v22/browser/`**,
+including a generated `404.html` identical to its `index.html`. The build never
+writes into the repository root.
 
-## Notes
+For manual production preview:
 
-- This project uses Angular 9, which is end-of-life. Consider upgrading if you plan to make significant changes.
-- The build output (hashed JS/CSS bundles) is committed directly to the repository root for GitHub Pages deployment. 
+```bash
+cd luis-hernandez-v22
+npm run build
+npm run preview
+```
+
+Open **http://localhost:4300/**. Stop a manual preview before running
+`npm run verify`, because Playwright owns that port and refuses to reuse another
+server. See the [workspace README](./luis-hernandez-v22/README.md) for details.
+
+## Deployment
+
+Publishing requires a separate decision and inspection of the actual GitHub
+Pages configuration. Deploy only the tested browser artifact, including its
+`404.html`; do not run the legacy build into `../` or delete root files wholesale.
+
+The base URL `/` is appropriate for this user site. The fallback allows Angular
+to render deep links, but GitHub Pages still returns HTTP 404 for those requests.
+Do not treat that behavior as an HTTP-200 server rewrite.
