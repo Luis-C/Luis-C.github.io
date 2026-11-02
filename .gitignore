@@ -2,6 +2,7 @@
 
 # compiled output
 **/docs
+!/docs/
 **/dist
 **/tmp
 **/out-tsc

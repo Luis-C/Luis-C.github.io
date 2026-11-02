@@ -152,10 +152,12 @@ Initial JS/CSS budgets are 1 MB warning / 2 MB error, and component styles are
 ## Publication
 
 Follow the [step-by-step GitHub Pages deployment guide](../README.md#deployment)
-in the repository README. It covers the one-time GitHub Actions workflow,
-Pages settings, committing source instead of build output, first deployment,
-live checks, future updates, and rollback.
+in the repository README. Build with `npm run build`, copy the contents of
+`dist/luis-hernandez-v22/browser/` to the repository-root `docs/` folder, add
+`docs/.nojekyll`, and commit the release files alongside the source.
 
-No automatic publication or root-file replacement is currently configured.
-The guide includes a workflow to add when ready; it publishes only the verified
-`dist/luis-hernandez-v22/browser/` artifact and preserves the legacy root files.
+Pages must be configured as **Deploy from a branch > master > /docs**.
+Pushing updated release files to `master` then publishes automatically; GitHub
+does not build Angular or run our tests. The guide covers verification, the
+one-time switch from the existing root publishing folder, live checks, and
+rollback. No custom Actions workflow or legacy root-file replacement is needed.

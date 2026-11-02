@@ -66,28 +66,17 @@ server. See the [workspace README](./luis-hernandez-v22/README.md) for details.
 
 ### How the new deployment works
 
-Use **GitHub Actions**, rather than copying compiled files into the repository
-root. GitHub builds the Angular source, runs verification, and publishes only
-`luis-hernandez-v22/dist/luis-hernandez-v22/browser/` to
-**https://luis-c.github.io/**. The original source and root deployment files stay
-in Git as a reference and rollback option.
+Build locally, copy the production output into the repository's `docs/` folder,
+and commit it to **`master`**. GitHub Pages serves those files at
+**https://luis-c.github.io/**; it does not compile Angular or run our tests.
+No custom GitHub Actions workflow is required.
 
-**One-time setup is still required.** The workflow below is an example to add;
-it has not been installed, and these instructions do not change GitHub settings
-or publish anything.
+The confirmed existing Pages configuration is **Deploy from a branch >
+master > / (root)**. For the upgraded site, change the folder to **/docs**
+after the first release files reach `master`, as described below.
+Keep the original root HTML, bundles, and assets unchanged for rollback.
 
-### 1. Record the current Pages configuration
-
-1. Open [this repository's Pages settings](https://github.com/Luis-C/Luis-C.github.io/settings/pages).
-2. Record the current **Source**, publishing branch, folder, and any custom domain
-   before changing them. These are needed if you want to restore the old site.
-3. Check the repository's default branch on GitHub. The examples below use
-   **`master`**, matching the local origin default-branch reference. If GitHub
-   now uses a different default branch, substitute it in the workflow and PR target.
-
-Do not delete or replace the existing root HTML, bundles, or assets.
-
-### 2. Verify and commit the upgraded source
+### 1. Verify the upgraded source
 
 From the repository root, using the pinned Node version:
 
@@ -104,111 +93,65 @@ Stop any manual server on port 4300 before verification. Do not publish if the
 checks fail. Current expected results are 10 passing unit tests and 27 passing
 browser tests, with two documented WebKit skips.
 
-Review and commit the upgraded workspace's source, public assets, configuration,
-tests, scripts, `package.json`, and **`package-lock.json`**, plus the updated
-documentation. Do **not** commit `node_modules/`, `dist/`, `.angular/`,
-`playwright-report/`, or `test-results/`; these are generated and ignored.
+### 2. Build the release and copy it to docs
 
-### 3. Add the deployment workflow
-
-On your upgrade branch, create **[.github/workflows/deploy-pages.yml](./.github/workflows/deploy-pages.yml)**
-at the repository root (create the directories if needed), containing:
-
-```yaml
-name: Deploy Angular to GitHub Pages
-
-on:
-  push:
-    branches: [master]
-  workflow_dispatch:
-
-permissions:
-  contents: read
-
-concurrency:
-  group: pages
-  cancel-in-progress: false
-
-jobs:
-  build:
-    runs-on: ubuntu-latest
-    permissions:
-      contents: read
-      pages: read
-    defaults:
-      run:
-        working-directory: luis-hernandez-v22
-    steps:
-      - name: Check out source
-        uses: actions/checkout@v6
-      - name: Set up Node
-        uses: actions/setup-node@v6
-        with:
-          node-version-file: luis-hernandez-v22/.node-version
-          cache: npm
-          cache-dependency-path: luis-hernandez-v22/package-lock.json
-      - name: Install dependencies
-        run: npm ci
-      - name: Install browser engines and Linux dependencies
-        run: npm exec playwright install --with-deps chromium webkit
-      - name: Verify and build production site
-        run: npm run verify
-      - name: Configure GitHub Pages
-        uses: actions/configure-pages@v5
-      - name: Upload built site
-        uses: actions/upload-pages-artifact@v4
-        with:
-          path: luis-hernandez-v22/dist/luis-hernandez-v22/browser
-
-  deploy:
-    needs: build
-    runs-on: ubuntu-latest
-    permissions:
-      pages: write
-      id-token: write
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
-    steps:
-      - name: Deploy to GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@v4
-```
-
-`npm run verify` already builds the production site and runs `postbuild`, which
-generates the required `404.html`. Do not upload the repository root, the workspace
-source, or the parent `dist/` directory instead of the exact `browser/` folder.
-No personal access token or third-party deployment package is needed.
-
-Commit this workflow along with the source changes, then push your upgrade branch.
-For the current branch:
+From the repository root:
 
 ```bash
-git push -u origin upgrade-angular
+cd luis-hernandez-v22
+npm run build
+mkdir -p ../docs
+cp -R dist/luis-hernandez-v22/browser/. ../docs/
+touch ../docs/.nojekyll
+cd ..
 ```
 
-Open a pull request targeting `master`. Review it before merging; a push to the
-upgrade branch alone does not trigger this workflow.
+`npm run build` selects the production configuration and automatically runs
+`postbuild` to create `404.html`. `npm run verify` also builds this same artifact;
+the explicit build above is useful when preparing a release separately.
 
-### 4. Enable Actions publishing and deploy
+Copy the **contents** of `browser/`, not the containing directory: `docs/index.html`,
+`docs/404.html`, and the generated assets must sit directly inside `docs/`.
+`.nojekyll` tells Pages to serve the compiled files without Jekyll processing.
 
-When ready to replace the live site:
+The copy command overwrites matching files but does not remove obsolete hashed
+bundles or retired assets from previous releases. Review `docs/` and remove only
+known obsolete generated files when updating; do not delete the repository root.
 
-1. In **Settings > Pages > Build and deployment > Source**, select
-   **GitHub Actions**. You do not need to select a Jekyll template.
-2. Merge the reviewed upgrade PR into `master`. This triggers the workflow.
-3. Open the repository's **Actions** tab, then **Deploy Angular to GitHub Pages**.
-   Wait for both **build** and **deploy** to succeed. Approve an environment
-   deployment if GitHub requests it.
-4. If deployment is rejected by an environment rule, check
-   **Settings > Environments > github-pages** and allow the intended default
-   branch without removing unrelated protections.
-5. Open the URL shown by the deployment job or **Settings > Pages**.
-   Publishing can take a few minutes to appear.
+### 3. Commit and push the release
 
-If the workflow was merged before changing the Pages source, select it under
-**Actions > Deploy Angular to GitHub Pages > Run workflow**, select `master`,
-and run it again after changing the setting.
+Review and commit the upgraded workspace's source, public assets, configuration,
+tests, scripts, `package.json`, and **`package-lock.json`**, plus documentation
+and **all release files in `docs/`**, including `.nojekyll`.
+
+Unlike the ignored temporary `dist/` output, **`docs/` must be committed** because
+it is the publishing source. Do not commit `node_modules/`, `dist/`, `.angular/`,
+`playwright-report/`, or `test-results/`.
+
+After reviewing and staging only the intended changes, commit them and push your
+branch. If working on `upgrade-angular`, push it and merge a reviewed pull request
+into `master`. If already on `master`, push the release commit directly:
+
+```bash
+git push origin master
+```
+
+Pushing another branch does not publish it. Pushing `master` without rebuilding
+and copying the output will not publish your latest Angular source changes.
+
+### 4. Set the Pages folder (one time)
+
+Once `docs/` is committed on `master`:
+
+1. Open [Settings > Pages](https://github.com/Luis-C/Luis-C.github.io/settings/pages).
+2. Keep **Source: Deploy from a branch**.
+3. Keep **Branch: master**, change **/ (root)** to **/docs**, and click **Save**.
+4. Wait for the Pages deployment to finish; check the repository's **Actions**
+   tab for the Pages build/deployment status.
+5. Open the site URL shown in Pages settings. Publishing can take a few minutes.
+
+For later releases, leave these settings unchanged. Pushing updated `docs/`
+files to `master` automatically triggers publication.
 
 ### 5. Check the live site
 
@@ -220,27 +163,27 @@ and run it again after changing the setting.
   and that CaughtUp appears once as past work.
 - If you still see the old site after a successful deployment, try a hard refresh
   or a private window. If the page is blank, check the browser's Console/Network
-  tabs and verify that the uploaded artifact contained `index.html` and assets
-  directly at its root.
+  tabs and verify that `docs/` contains `index.html` and assets directly at its root.
 
-The base URL `/` is appropriate for this user site. The fallback allows Angular
+The base URL remains **`/`**, not `/docs/`: the publishing folder does not appear
+in the public URL. The fallback allows Angular
 to render deep links, but GitHub Pages still returns HTTP 404 for those requests.
 Do not treat that behavior as an HTTP-200 server rewrite.
 
 ### Future updates and rollback
 
-**Future updates:** edit the Angular workspace, run `npm run verify`, commit and
-push your branch, then merge its PR into `master`. Each push to `master` runs
-verification and deploys automatically; failed verification prevents deployment.
-You do not need to rebuild or commit root bundles.
+**Future updates:** edit the Angular workspace, run `npm run verify`, repeat the
+release copy in step 2, and commit both source and `docs/`. Push/merge into
+`master`. Verification is local; Pages does not block publication on our tests.
 
-**Undo a bad Angular release:** revert the offending source commit(s) through a
-new PR, verify, and merge. The workflow rebuilds and redeploys the corrected site.
+**Undo a bad Angular release:** revert the release commit(s), including both
+source and `docs/`, then push/merge the revert into `master`. For a source-only
+revert, verify, rebuild, and copy the corrected output before committing.
 
-**Restore the original website:** cancel any in-progress Angular deployment,
-then restore the Pages source, branch, and folder recorded in step 1 (typically
-**Deploy from a branch**). The unchanged legacy root files are still available.
+**Restore the original website:** in Pages settings, keep **Deploy from a branch >
+master**, change **/docs** back to **/ (root)**, and save. The unchanged legacy
+root files are still available.
 If GitHub does not start a branch deployment, push a new commit to that publishing
 branch. Do not delete the upgraded workspace to roll back.
 
-Reference: [GitHub's custom Pages workflow documentation](https://docs.github.com/en/pages/getting-started-with-github-pages/using-custom-workflows-with-github-pages).
+Reference: [GitHub's Pages publishing-source documentation](https://docs.github.com/en/pages/getting-started-with-github-pages/configuring-a-publishing-source-for-your-github-pages-site).
