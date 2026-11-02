@@ -102,7 +102,7 @@ luis-hernandez-v22/      (new Angular 22 source — built from scratch or migrat
 - `luis-hernandez/angular.json` → `luis-hernandez-v9/angular.json`
 - `luis-hernandez/src/` → `luis-hernandez-v9/src/`
 - `luis-hernandez/e2e/` → `luis-hernandez-v9/e2e/`
-- `luis-hernendez/browserslist` → `luis-hernandez-v9/browserslist`
+- `luis-hernandez/browserslist` → `luis-hernandez-v9/browserslist`
 - `luis-hernandez/debug.log` → `luis-hernandez-v9/debug.log`
 
 **What stays in `luis-hernandez/` (shared):**
@@ -324,3 +324,20 @@ Remove these entirely:
 - [ ] Responsive layout works on mobile
 - [ ] Resume PDF link works
 - [ ] Social links in footer work
+- [ ] Archived `luis-hernandez-v9/` is committed to git and untouched by the new build
+- [ ] Every `portfolio.json` entry still renders its `imgSrc` next to its description in the new `{#each}` card template
+
+---
+
+## Review notes
+
+Open questions / issues for the plan author (not yet resolved):
+
+- **Numbering is inconsistent.** "Upgrade Phases" are 0–5, but their subsections are labeled 2.x / 3.x (legacy numbering), and the "Estimated Effort" table uses 1–6. Reconcile to a single scheme (e.g. Phase 0–5 with 0.1/1.1/2.1 subsections) so the effort table rows map to actual sections.
+- **Missing explicit scaffold step.** Phase 0 mentions "a fresh `luis-hernandez/` folder is created" but the new project is actually `luis-hernandez-v22/`. There is no step defining the `ng new` command, the style flag, or whether `--standalone`/`--routing` are set. Add a concrete scaffold step (or fold it into Phase 1) and resolve the folder-name mismatch (`luis-hernandez` vs `luis-hernandez-v22`).
+- **Asset copy ordering is unclear.** Phase 0 says assets are "copied to new project," but the new project does not exist after Phase 0. State *which* phase copies `assets/` + `favicon.ico` into the new scaffold.
+- **"What stays in `luis-hernandez/` (shared)" contradicts the rename.** The whole folder is renamed to `luis-hernandez-v9/`, so nothing literally "stays in `luis-hernandez/`." Re-label as "assets to copy from the archive" and specify the destination.
+- **Target TypeScript version.** "5.7.x" is likely a floor, not a ceiling — confirm the version Angular 22 actually requires/supports and state it as "compatible with Angular 22."
+- **Route animations under standalone.** Phase 3 claims "no changes," but removing `AppModule` means `BrowserAnimationsModule`/`provideAnimations()` must be added to the root providers explicitly. Call that out.
+- **Pre-Upgrade wording.** "the only step you need to do before the technical work" conflicts with Phase 0 + scaffolding. Soften to "the only human prerequisite before the technical work."
+- **`--baseHref`.** Confirm it matches the deployed GitHub Pages URL (`luis-c.github.io` for a user site vs `<org>.github.io/<repo>` for a project site).
