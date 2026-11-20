@@ -226,7 +226,7 @@ test('routing, keyboard tabs, refresh, history and Pages 404 shell work', async 
   );
 });
 
-test('bundled media, background, favicon and all source assets are intact', async ({
+test('bundled media, favicon and all source assets are intact', async ({
   page,
   request,
 }) => {
@@ -236,7 +236,7 @@ test('bundled media, background, favicon and all source assets are intact', asyn
     );
   }
   const assets = walk(join(originalSource, 'assets'));
-  expect(assets).toHaveLength(32);
+  expect(assets).toHaveLength(30);
   for (const asset of assets) {
     const path = relative(originalSource, asset);
     expect(readFileSync(resolve('public', path))).toEqual(readFileSync(asset));
@@ -246,14 +246,9 @@ test('bundled media, background, favicon and all source assets are intact', asyn
   expect(pdf.ok()).toBe(true);
   expect(pdf.headers()['content-type']).toContain('application/pdf');
   expect((await pdf.body()).subarray(0, 5).toString()).toBe('%PDF-');
-  for (const [path, contentType] of [
-    ['/assets/images/bg.jpg', 'image/jpeg'],
-    ['/favicon.ico', 'image/x-icon'],
-  ]) {
-    const response = await request.get(path);
-    expect(response.ok()).toBe(true);
-    expect(response.headers()['content-type']).toContain(contentType);
-  }
+  const favicon = await request.get('/favicon.ico');
+  expect(favicon.ok()).toBe(true);
+  expect(favicon.headers()['content-type']).toContain('image/x-icon');
   expect(readFileSync('public/favicon.ico')).toEqual(
     readFileSync(join(originalSource, 'favicon.ico')),
   );
@@ -349,7 +344,7 @@ test('watchfaces has seven released products, short summaries and direct store l
     const imageResponse = await request.get(`/${watchface.image}`);
     expect(imageResponse.ok()).toBe(true);
     expect(imageResponse.headers()['content-type']).toContain(
-      watchface.image.endsWith('.jpg') ? 'image/jpeg' : 'image/png',
+      'image/webp',
     );
     expect(await imageResponse.body()).toEqual(readFileSync(resolve('public', watchface.image)));
     const link = card.getByRole('link', {

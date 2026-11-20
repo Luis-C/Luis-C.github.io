@@ -5,7 +5,7 @@
       "Founding member and Software Engineer",
       "This startup is designed to motivate us to dive into new projects in the pursuit of knowledge and the common good."
     ],
-    "imgSrc": "assets/images/cu-logo.png",
+    "imgSrc": "assets/images/cu-logo.webp",
     "codeSrc": "https://github.com/Luis-C/Luis-C.github.io",
     "example": "https://luis-c.github.io/SheHacks-VT/home"
   },
@@ -16,7 +16,7 @@
       "Built on Angular with a Firebase backend. I've learned a lot while developing this project.",
       "Currently the goal is to improve the design to improve UI/UX."
     ],
-    "imgSrc": "assets/images/cu-web-app.png",
+    "imgSrc": "assets/images/cu-web-app.webp",
     "view": "https://caughtup.web.app"
   },
   {
@@ -25,7 +25,7 @@
       "This project was part of the VT Hacks Hackathon",
       "We wanted to make scheduling easier. The android, iOS, and web application allows users to upload or take a photo with their camera and we create a calendar event for them."
     ],
-    "imgSrc": "assets/images/eventParser.png",
+    "imgSrc": "assets/images/eventParser.webp",
     "view": "https://caughtup-parser.firebaseapp.com/home"
   },
   {
@@ -34,7 +34,7 @@
       "It Started as a project for my Technical Writing class.",
       "I wasn't fully pleased with sticking to a template. So, I decided to re-do the project utilizing new skills such as Angular."
     ],
-    "imgSrc": "assets/images/website.png",
+    "imgSrc": "assets/images/website.webp",
     "github": "https://github.com/Luis-C/Luis-C.github.io"
   },
   {
@@ -42,7 +42,7 @@
     "paragraphs": [
       "Wouldn't it be funny if recruiters had to apply for a job candidate? This is a full-stack project designed for my cloud software development class"
     ],
-    "imgSrc": "assets/images/candidates.png",
+    "imgSrc": "assets/images/candidates.webp",
     "github": "https://github.com/Luis-C/Candidates"
   },
   {
@@ -50,7 +50,7 @@
     "paragraphs": [
       "Senior Capstone Project: My task is to build a front end for a blockhain application. Bid, buy and sell parking spots using smart contracts!"
     ],
-    "imgSrc": "assets/images/spot-block.png",
+    "imgSrc": "assets/images/spot-block.webp",
     "github": "https://github.com/Luis-C/Spot-Block"
   },
   {
@@ -58,7 +58,7 @@
     "paragraphs": [
       "Max Jitter is usually used for video processing. However, by researching the fundamentals of Neural Networks and sprinkling some Javascript I found a creative way to utilize the software to make a visual representation of a Neural Network."
     ],
-    "imgSrc": "assets/images/jitterNN.png",
+    "imgSrc": "assets/images/jitterNN.webp",
     "github": "https://github.com/Luis-C/NeuralNetwork_Jitter-MaxMSP"
   },
   {
@@ -67,7 +67,7 @@
       "A basic Sentiment Analysis project designed to provide insights towards the truthfullness of a news article based on word frequency.",
       "As a team we compared the accuracy of two Naive Bayes Classifiers which we implemented utlizing two different Python libraries, TextBlob and NLTK."
     ],
-    "imgSrc": "assets/images/sentanal.png",
+    "imgSrc": "assets/images/sentanal.webp",
     "github": "https://github.com/Luis-C/Sentanal"
   },
   {
@@ -75,7 +75,7 @@
     "paragraphs": [
       "The class project was to design a website to help upcoming alumni in search of student housing. To do so, we conducted research on different common choices and created a site aggregate."
     ],
-    "imgSrc": "assets/images/housing.png",
+    "imgSrc": "assets/images/housing.webp",
     "view": "https://studenthousing.vttw.org/"
   },
   {
@@ -83,7 +83,7 @@
     "paragraphs": [
       "Had fun creating a front end for MakeMeGo a small hackathon idea about using geolocation to check-into events and goals."
     ],
-    "imgSrc": "assets/images/hack3.png",
+    "imgSrc": "assets/images/hack3.webp",
     "view": "https://luis-c.github.io/SheHacks-VT/home"
   },
 
@@ -93,7 +93,7 @@
       "An android application that scans APK's in search of vulnerabilities.",
       "This was project for my Security Fundamentals Class."
     ],
-    "imgSrc": "assets/images/placeholder.png",
+    "imgSrc": "assets/images/placeholder.webp",
     "github": "https://github.com/Sllarsen/Principles-Of-Security-Server"
   },
   {
@@ -102,7 +102,7 @@
       "Personal project were I experiment with React",
       "More info to come once the project is finished"
     ],
-    "imgSrc": "assets/images/placeholder.png",
+    "imgSrc": "assets/images/placeholder.webp",
     "github": "https://github.com/Luis-C/Code-Art"
   }
 ]

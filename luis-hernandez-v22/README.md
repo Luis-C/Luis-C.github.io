@@ -11,10 +11,11 @@ theme, images, and audio. No deployment changes are made by this workspace.
 - Material 2 compatibility theme with amber accents and charcoal glass surfaces.
 - Vitest unit tests, Playwright Chromium acceptance tests, and WebKit appearance checks.
 
-The original [Angular 9 source](../luis-hernandez/) remains a read-only reference.
-Assets are copied into [public/assets/](./public/assets/), preserving their
-`/assets/...` URLs. The active theme is [src/styles/_theme.scss](./src/styles/_theme.scss),
-not the legacy SCSS file retained among the copied assets.
+The original [Angular 9 source](../luis-hernandez/) remains a content and
+asset-parity reference. Its images and the public copy are both encoded as WebP,
+preserving their `/assets/...` URL structure. The active theme is
+[src/styles/_theme.scss](./src/styles/_theme.scss), not the legacy SCSS file
+retained among the copied assets.
 
 ## Install and Develop
 
@@ -49,7 +50,9 @@ npm run verify
 3. `npm run build` - strict production compilation, budget checks, and fallback copy.
 4. `npm run test:e2e` - Chromium acceptance and WebKit appearance tests against the production output.
 
-Playwright starts and stops its own static preview on **localhost:4300**. Stop
+The e2e script disables Node’s ambient proxy setting so Playwright’s local
+server probes keep matching Host and authority headers. Playwright starts and
+stops its own static preview on **localhost:4300**. Stop
 any manual preview first; tests intentionally refuse to reuse an existing server.
 Reports, traces on failure, and responsive screenshots are ignored by Git:
 
@@ -95,8 +98,9 @@ request is required. The system font stack remains readable without downloaded f
 
 [Global styles](./src/styles.scss) define shared glass-surface tokens over static
 charcoal, muted burgundy, and slate CSS gradients. No background image download or
-fixed-background scroll effect is required. The original background asset remains
-in the preserved asset copy, but is no longer displayed.
+fixed-background scroll effect is required. The unused legacy background and
+sample AIF assets have been removed from both source asset trees; the three MP3s
+remain unchanged.
 
 - Cards, header, footer, and the watchface introduction share surface treatment.
 - The default is opaque and readable; `@supports` enables 12px backdrop blur and
@@ -131,6 +135,10 @@ were disabled. It is not included in the default passing verification command;
 run the explicit command on a compatible host before claiming Firefox validation.
 
 ## Production Build and Local Preview
+
+Angular CLI caching is disabled in `angular.json`: the default native LMDB cache
+aborts AOT builds on this macOS host. Explicit `NG_BUILD_CACHE_STORE=sqlite`
+works, but disabling caching keeps bare `ng build` and `npm run build` reliable.
 
 ```bash
 npm run build
