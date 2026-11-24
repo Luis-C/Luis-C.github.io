@@ -109,11 +109,13 @@ remain unchanged.
   Reduced transparency has limited browser support, so readability never depends
   on detecting it.
 - Forced-colors mode uses system colors and removes background gradients/blur.
-- Reduced motion is respected. Hover only changes borders on fine pointers; it
-  does not animate expensive blur effects. Keyboard focus receives a visible outline.
+- Fine-pointer hover effects are enabled by default and gated by one feature flag.
+  Cards, images, chips, outlined buttons, navigation links, and the watchface
+  introduction get subtle feedback without animating blur. Lift and scale effects
+  are disabled for reduced motion and forced colors; keyboard focus keeps its visible outline.
 - The skip link moves focus to the main content, and navigation stays usable on mobile.
 
-`npm run verify` currently passes 10 unit tests and 27 browser tests; two WebKit
+`npm run verify` currently passes 11 unit tests and 28 browser tests; two WebKit
 cases are explicitly skipped because reduced-transparency/forced-color emulation
 is covered in Chromium instead. Appearance tests cover opaque fallback by disabling
 the feature enhancement, worst-case white-backdrop text contrast samples (at least

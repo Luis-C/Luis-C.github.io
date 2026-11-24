@@ -83,8 +83,90 @@ html .item:focus-within {
 }
 
 @media (hover: hover) and (pointer: fine) {
-  html .item:hover {
+  body.hover-effects .card,
+  body.hover-effects .item,
+  body.hover-effects .intro {
+    transition:
+      transform 200ms ease,
+      box-shadow 200ms ease,
+      border-color 160ms ease;
+  }
+
+  body.hover-effects .card:hover,
+  body.hover-effects .item:hover,
+  body.hover-effects .intro:hover {
     border-color: var(--accent);
+  }
+
+  body.hover-effects .nav-link:not([aria-current]) {
+    border-radius: 10px;
+    transition: background-color 150ms ease;
+  }
+
+  body.hover-effects .nav-link:not([aria-current]):hover {
+    background-color: rgba(255, 255, 255, 0.08);
+  }
+
+  body.hover-effects a[mat-stroked-button],
+  body.hover-effects button[mat-stroked-button] {
+    transition:
+      border-color 160ms ease,
+      box-shadow 200ms ease;
+  }
+
+  body.hover-effects a[mat-stroked-button]:hover,
+  body.hover-effects button[mat-stroked-button]:hover {
+    border-color: var(--accent);
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.28);
+  }
+
+  body.hover-effects mat-chip {
+    transition: background-color 160ms ease;
+  }
+
+  @media (forced-colors: none) {
+    body.hover-effects mat-chip:hover {
+      --mat-chip-elevated-container-color: #ffd56b;
+    }
+  }
+}
+
+@media (hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference) and
+  (forced-colors: none) {
+  body.hover-effects .card,
+  body.hover-effects .item {
+    overflow: hidden;
+  }
+
+  body.hover-effects .card:hover,
+  body.hover-effects .item:hover,
+  body.hover-effects .intro:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 14px 32px rgba(0, 0, 0, 0.34);
+  }
+
+  body.hover-effects .card img,
+  body.hover-effects .item img {
+    transition: transform 250ms ease;
+  }
+
+  body.hover-effects .card:hover img,
+  body.hover-effects .item:hover img {
+    transform: scale(1.04);
+  }
+}
+
+@media (forced-colors: active) {
+  body.hover-effects .nav-link {
+    background-color: transparent;
+  }
+
+  body.hover-effects .card:hover,
+  body.hover-effects .item:hover,
+  body.hover-effects .intro:hover,
+  body.hover-effects a[mat-stroked-button]:hover,
+  body.hover-effects button[mat-stroked-button]:hover {
+    box-shadow: none;
   }
 }
 

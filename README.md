@@ -11,7 +11,6 @@ Angular 9 source remain unchanged.
 | [luis-hernandez-v22/](./luis-hernandez-v22/) | Standalone, zoneless Angular 22 application; all new development |
 | [luis-hernandez/](./luis-hernandez/) | Original Angular 9 reference; its old toolchain is not needed for the copy |
 | Root HTML, bundles, and [assets/](./assets/) | Existing deployed Angular 9 website; do not overwrite when building |
-| [UPGRADE-PLAN.md](./UPGRADE-PLAN.md) | Migration plan, acceptance criteria, and implementation results |
 
 ## Run the Upgraded Copy
 

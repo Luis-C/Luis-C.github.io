@@ -2,6 +2,7 @@ import { TestBed } from '@angular/core/testing';
 import { provideRouter, Router } from '@angular/router';
 import { App } from './app.component';
 import { routes } from './app.routes';
+import { HOVER_EFFECTS_BODY_CLASS } from './features';
 
 describe('App routing and shell', () => {
   beforeEach(() =>
@@ -10,6 +11,14 @@ describe('App routing and shell', () => {
       providers: [provideRouter(routes)],
     }),
   );
+
+  it('enables hover effects by default and removes the body class on destroy', () => {
+    const fixture = TestBed.createComponent(App);
+    fixture.detectChanges();
+    expect(document.body.classList.contains(HOVER_EFFECTS_BODY_CLASS)).toBe(true);
+    fixture.destroy();
+    expect(document.body.classList.contains(HOVER_EFFECTS_BODY_CLASS)).toBe(false);
+  });
 
   it('associates navigation with the routed panel and preserves shell links', async () => {
     const fixture = TestBed.createComponent(App);

@@ -144,6 +144,20 @@ test('forced colors preserves visible surfaces and active navigation', async ({
   for (const surface of await surfaces(page)) expect(surface.blur).toBe('none');
   const active = page.locator('.nav-link[aria-current="page"]');
   expect(await active.evaluate((element) => getComputedStyle(element).outlineStyle)).toBe('solid');
+  const card = page.locator('app-home mat-card').first();
+  await card.hover();
+  expect(await card.evaluate((element) => getComputedStyle(element).boxShadow)).toBe('none');
+  const chip = page.locator('mat-chip').first();
+  await chip.hover();
+  expect(
+    await chip.evaluate((element) =>
+      getComputedStyle(element).getPropertyValue('--mat-chip-elevated-container-color').trim(),
+    ),
+  ).not.toBe('#ffd56b');
+  await page.getByRole('tab', { name: 'Watchfaces', exact: true }).click();
+  const button = page.locator('[data-watchface] a[mat-stroked-button]').first();
+  await button.hover();
+  expect(await button.evaluate((element) => getComputedStyle(element).boxShadow)).toBe('none');
 });
 
 test('keyboard skip link, focus feedback, touch targets and reduced motion work', async ({
@@ -178,6 +192,13 @@ test('keyboard skip link, focus feedback, touch targets and reduced motion work'
   expect(smallTargets).toEqual([]);
   const duration = await link.evaluate((element) => getComputedStyle(element).transitionDuration);
   expect(duration.split(',').every((value) => parseFloat(value) <= 0.00001)).toBe(true);
+  const card = page.locator('[data-watchface]').first();
+  await card.hover();
+  expect(
+    await card.evaluate(
+      (element) => new DOMMatrixReadOnly(getComputedStyle(element).transform).m42,
+    ),
+  ).toBe(0);
 });
 
 test('all pages reflow at 200 percent zoom and keep mobile tabs visible', async ({

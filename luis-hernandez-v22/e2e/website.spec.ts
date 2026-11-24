@@ -195,6 +195,75 @@ test('home preserves source text, skills, courses, strengths and interactive con
   await imagesLoaded(page);
 });
 
+test('hover effects are gated and enhance cards, images, chips, navigation and buttons', async ({
+  page,
+}) => {
+  await page.goto('/');
+  await expect(page.locator('body')).toHaveClass(/hover-effects/);
+  expect(await page.evaluate(() => matchMedia('(hover: hover) and (pointer: fine)').matches)).toBe(
+    true,
+  );
+
+  const card = page.locator('app-home mat-card').first();
+  const image = card.locator('img');
+  const initialBorder = await card.evaluate((element) => getComputedStyle(element).borderBottomColor);
+  await card.hover();
+  await expect
+    .poll(() =>
+      card.evaluate((element) => new DOMMatrixReadOnly(getComputedStyle(element).transform).m42),
+    )
+    .toBe(-2);
+  await expect
+    .poll(() =>
+      image.evaluate((element) => new DOMMatrixReadOnly(getComputedStyle(element).transform).a),
+    )
+    .toBeGreaterThan(1.03);
+  expect(await card.evaluate((element) => getComputedStyle(element).borderBottomColor)).not.toBe(
+    initialBorder,
+  );
+
+  const chip = page.locator('mat-chip').first();
+  await chip.hover();
+  await expect
+    .poll(() =>
+      chip.evaluate((element) =>
+        getComputedStyle(element).getPropertyValue('--mat-chip-elevated-container-color').trim(),
+      ),
+    )
+    .toBe('#ffd56b');
+
+  const portfolioTab = page.getByRole('tab', { name: 'Portfolio', exact: true });
+  await portfolioTab.hover();
+  await expect
+    .poll(() => portfolioTab.evaluate((element) => getComputedStyle(element).backgroundColor))
+    .not.toBe('rgba(0, 0, 0, 0)');
+  await page.getByRole('tab', { name: 'Watchfaces', exact: true }).click();
+  const watchface = page.locator('[data-watchface]').first();
+  const intro = page.locator('.intro');
+  await intro.hover();
+  await expect
+    .poll(() =>
+      intro.evaluate((element) => new DOMMatrixReadOnly(getComputedStyle(element).transform).m42),
+    )
+    .toBe(-2);
+  const button = watchface.locator('a[mat-stroked-button]');
+  const buttonBorder = await button.evaluate(
+    (element) => getComputedStyle(element).borderBottomColor,
+  );
+  await button.hover();
+  await expect
+    .poll(() => button.evaluate((element) => getComputedStyle(element).borderBottomColor))
+    .not.toBe(buttonBorder);
+
+  await page.evaluate(() => document.body.classList.remove('hover-effects'));
+  await watchface.hover();
+  expect(
+    await watchface.evaluate(
+      (element) => new DOMMatrixReadOnly(getComputedStyle(element).transform).m42,
+    ),
+  ).toBe(0);
+});
+
 test('routing, keyboard tabs, refresh, history and Pages 404 shell work', async ({
   page,
   request,
