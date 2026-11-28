@@ -111,7 +111,8 @@ remain unchanged.
 - Forced-colors mode uses system colors and removes background gradients/blur.
 - Fine-pointer hover effects are enabled by default and gated by one feature flag.
   Cards, images, chips, outlined buttons, navigation links, and the watchface
-  introduction get subtle feedback without animating blur. Lift and scale effects
+  introduction get subtle feedback without animating blur. Image zoom stays within
+  the image area, leaving card text and spacing unchanged. Lift and scale effects
   are disabled for reduced motion and forced colors; keyboard focus keeps its visible outline.
 - The skip link moves focus to the main content, and navigation stays usable on mobile.
 

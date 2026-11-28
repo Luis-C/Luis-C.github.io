@@ -107,6 +107,91 @@ test('increased contrast removes transparency and blur from all surfaces', async
   }
 });
 
+test('card image zoom stays within its original area', async ({ page }) => {
+  for (const width of [320, 1440]) {
+    await page.setViewportSize({ width, height: 900 });
+    await openHome(page);
+
+    for (const [tab, host] of [
+      [null, 'app-home'],
+      ['Portfolio', 'app-portfolio'],
+      ['Watchfaces', 'app-watchfaces'],
+    ]) {
+      if (tab) await page.getByRole('tab', { name: tab, exact: true }).click();
+      const images = page.locator(`${host} mat-card img`);
+      await expect(images.first()).toBeVisible();
+      expect(
+        await images.evaluateAll((elements) =>
+          elements.every(
+            (image) =>
+              image.parentElement?.classList.contains('card-image') &&
+              getComputedStyle(image.parentElement).overflow === 'hidden',
+          ),
+        ),
+      ).toBe(true);
+
+      const card = page
+        .locator(`${host} mat-card`)
+        .filter({ has: page.locator('img') })
+        .first();
+      const frame = card.locator('.card-image');
+      const image = frame.locator('img');
+      const title = card.locator('mat-card-title').first();
+      await image.scrollIntoViewIfNeeded();
+      await page.mouse.move(0, 0);
+      await expect
+        .poll(() =>
+          image.evaluate(
+            (element: HTMLImageElement) => element.complete && element.naturalWidth > 0,
+          ),
+        )
+        .toBe(true);
+      await expect
+        .poll(() =>
+          image.evaluate((element) => new DOMMatrixReadOnly(getComputedStyle(element).transform).a),
+        )
+        .toBe(1);
+      const before = await card.evaluate((element) => {
+        const frame = element.querySelector('.card-image')!.getBoundingClientRect();
+        const image = element.querySelector('img')!.getBoundingClientRect();
+        const title = element.querySelector('mat-card-title')!.getBoundingClientRect();
+        return {
+          width: frame.width,
+          height: frame.height,
+          imageWidth: image.width,
+          imageHeight: image.height,
+          gap: title.top - frame.bottom,
+        };
+      });
+      expect(before.imageWidth).toBeCloseTo(before.width, 1);
+      expect(before.imageHeight).toBeCloseTo(before.height, 1);
+      await card.hover();
+      await expect
+        .poll(() =>
+          image.evaluate((element) => new DOMMatrixReadOnly(getComputedStyle(element).transform).a),
+        )
+        .toBeGreaterThan(1.039);
+      const after = await card.evaluate((element) => {
+        const frame = element.querySelector('.card-image')!.getBoundingClientRect();
+        const image = element.querySelector('img')!.getBoundingClientRect();
+        const title = element.querySelector('mat-card-title')!.getBoundingClientRect();
+        return {
+          width: frame.width,
+          height: frame.height,
+          imageBottom: image.bottom,
+          frameBottom: frame.bottom,
+          gap: title.top - frame.bottom,
+        };
+      });
+      expect(after.width).toBeCloseTo(before.width, 1);
+      expect(after.height).toBeCloseTo(before.height, 1);
+      expect(after.gap).toBeCloseTo(before.gap, 1);
+      expect(after.imageBottom).toBeGreaterThan(after.frameBottom);
+      await expect(title).toBeVisible();
+    }
+  }
+});
+
 test('reduced transparency independently selects the opaque fallback', async ({
   page,
   context,
@@ -199,6 +284,11 @@ test('keyboard skip link, focus feedback, touch targets and reduced motion work'
       (element) => new DOMMatrixReadOnly(getComputedStyle(element).transform).m42,
     ),
   ).toBe(0);
+  expect(
+    await card
+      .locator('img')
+      .evaluate((element) => new DOMMatrixReadOnly(getComputedStyle(element).transform).a),
+  ).toBe(1);
 });
 
 test('all pages reflow at 200 percent zoom and keep mobile tabs visible', async ({

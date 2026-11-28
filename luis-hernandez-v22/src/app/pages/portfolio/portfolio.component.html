@@ -1,7 +1,9 @@
 <div class="container">
   @for (project of projects; track project.title) {
     <mat-card class="item" data-project>
-      <img mat-card-image [src]="project.imgSrc" [alt]="project.title" />
+      <div class="card-image">
+        <img mat-card-image [src]="project.imgSrc" [alt]="project.title" />
+      </div>
       <mat-card-title>{{ project.title }}</mat-card-title>
       <mat-card-content>
         @for (paragraph of project.paragraphs; track $index) {
@@ -24,12 +26,16 @@
   }
 
   <mat-card class="item">
-    <img mat-card-image src="assets/images/hack2.webp" alt="VT Arduino Hackathon" />
+    <div class="card-image">
+      <img mat-card-image src="assets/images/hack2.webp" alt="VT Arduino Hackathon" />
+    </div>
     <mat-card-title> VT Arduino Hackathon </mat-card-title>
     <mat-card-content> Played around with arduinos! </mat-card-content>
   </mat-card>
   <mat-card class="item">
-    <img mat-card-image src="assets/images/gencyber.webp" alt="GenCyber Teaching Assistant" />
+    <div class="card-image">
+      <img mat-card-image src="assets/images/gencyber.webp" alt="GenCyber Teaching Assistant" />
+    </div>
     <mat-card-title> GenCyber Teaching Assistant </mat-card-title>
     <mat-card-content>
       "GenCyber is a week-long camp to teach high school teachers about computer security and how to
@@ -41,7 +47,9 @@
   </mat-card>
 
   <mat-card class="item">
-    <img mat-card-image src="assets/images/unreal.webp" alt="Game Development" />
+    <div class="card-image">
+      <img mat-card-image src="assets/images/unreal.webp" alt="Game Development" />
+    </div>
     <mat-card-title> Game Development </mat-card-title>
     <mat-card-content>
       Currently working on a team project using Unreal Engine. More Details to come once the project
@@ -53,7 +61,9 @@
   </mat-card>
 
   <mat-card class="item">
-    <img mat-card-image src="assets/images/musicalNN.webp" alt="Computer Music" />
+    <div class="card-image">
+      <img mat-card-image src="assets/images/musicalNN.webp" alt="Computer Music" />
+    </div>
     <mat-card-title> Computer Music </mat-card-title>
     <mat-card-content>
       By building on my previous work and leveraging Max's audio capabilities I created a more
@@ -91,7 +101,9 @@
   </mat-card>
 
   <mat-card class="item">
-    <img mat-card-image src="assets/images/linux.webp" alt="Linux Laptop Orchestra" />
+    <div class="card-image">
+      <img mat-card-image src="assets/images/linux.webp" alt="Linux Laptop Orchestra" />
+    </div>
     <mat-card-title> Linux Laptop Orchestra (L2Ork) </mat-card-title>
     <mat-card-content>
       <a
@@ -114,7 +126,9 @@
   </mat-card>
 
   <mat-card class="item">
-    <img mat-card-image src="assets/images/hack1.webp" alt="STEM Club" />
+    <div class="card-image">
+      <img mat-card-image src="assets/images/hack1.webp" alt="STEM Club" />
+    </div>
     <mat-card-title> STEM Club (HS)</mat-card-title>
     <mat-card-content>
       Since High School I've been interested in constantly learning. Early coding experience.

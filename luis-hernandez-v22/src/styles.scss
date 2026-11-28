@@ -75,6 +75,16 @@ html .item:focus-within {
   outline-offset: 3px;
 }
 
+.card-image {
+  overflow: hidden;
+  border-top-left-radius: inherit;
+  border-top-right-radius: inherit;
+}
+
+.card-image img {
+  display: block;
+}
+
 @supports ((backdrop-filter: blur(12px)) or (-webkit-backdrop-filter: blur(12px))) {
   html {
     --surface: rgba(24, 28, 36, 0.82);

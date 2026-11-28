@@ -6,13 +6,15 @@
   <div class="catalog">
     @for (watchface of watchfaces; track watchface.storeUrl) {
       <mat-card class="item" data-watchface>
-        <img
-          mat-card-image
-          [src]="watchface.image"
-          [alt]="watchface.name + ' watchface preview'"
-          width="500"
-          height="500"
-        />
+        <div class="card-image">
+          <img
+            mat-card-image
+            [src]="watchface.image"
+            [alt]="watchface.name + ' watchface preview'"
+            width="500"
+            height="500"
+          />
+        </div>
         <mat-card-header>
           <mat-card-title
             ><h2>{{ watchface.name }}</h2></mat-card-title
